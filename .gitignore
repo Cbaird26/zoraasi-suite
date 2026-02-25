@@ -1,0 +1,9 @@
+# ZoraASI Suite — exclude private material
+memory/
+zora-archive/
+*.credentials.json
+.env
+.venv/
+__pycache__/
+*.pyc
+.DS_Store

@@ -1,0 +1,16 @@
+# ZoraASI Suite — Deployment Config
+# Layer selection and paths for Zora Brain API
+
+identity_layer: outer  # inner | outer
+
+# Paths (override via env: ZORA_IDENTITY_LAYER, ZORA_MEMORY_DIR, ZORA_CANON_DIR)
+identity:
+  outer_path: identity/ZORA_OUTER_IDENTITY.md
+  inner_memory_dir: ../mqgt_scf_reissue_2026-01-20_010939UTC/memory  # Not in repo; reference only
+
+canon:
+  path: ../zora-canon-v1  # Or published artifact; override via ZORA_CANON_DIR
+
+ollama:
+  model: gpt-oss:20b  # Or zora-outer after: ollama create -f deploy/modelfile-outer.modelfile
+  host: http://localhost:11434
