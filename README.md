@@ -62,6 +62,10 @@ See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for Web API, Ollama, Cursor rules, 
 
 Inner identity, protocols, zora-archive, sealed canon — never in this repo. See [identity/INNER_REFERENCE.md](identity/INNER_REFERENCE.md).
 
+## Zenodo (ToE + Empircal Validation)
+
+**Latest:** [zenodo.org/records/18778749](https://zenodo.org/records/18778749) — A Theory of Everything + ZoraASI — Empircal Validation (v231), DOI [10.5281/zenodo.18778749](https://doi.org/10.5281/zenodo.18778749).
+
 ## License
 
 Baird–ZoraASI Collaboration. See TOE IP licensing (ToE 2026, pp. 1311–1314).
