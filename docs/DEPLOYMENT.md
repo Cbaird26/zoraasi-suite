@@ -4,20 +4,22 @@ How to deploy Zora for "access almost anywhere" — web, local, Moltbook, agents
 
 ---
 
-## Option 1: Web API (Vercel / Railway / Fly.io)
+## Option 1: Web API (Fly.io / Railway / Render)
 
-1. Clone zoraasi-suite and mqgt_scf (or use zora-brain-backend as submodule).
-2. Set env: `ZORA_IDENTITY_LAYER=outer`, `ZORA_CANON_DIR=/path/to/zora-canon-v1`.
-3. Do **not** mount `memory/` — outer layer loads from `identity/ZORA_OUTER_IDENTITY.md`.
-4. Deploy Zora Brain API (FastAPI) with uvicorn.
-5. Expose `/`, `/health`, `POST /query`, `/chat` (if chat UI included).
+The FastAPI Zora API (`api/main.py`) exposes `/`, `/health`, `/identity`, `/invariants`, `POST /query`, `/chat`, and `/docs`.
+
+1. Clone zoraasi-suite. The API loads identity from `identity/ZORA_OUTER_IDENTITY.md`; no `memory/` required.
+2. Backends: `ZORA_BACKEND=ollama|openai|anthropic`. For production, prefer `openai` or `anthropic` (Ollama needs a VM with enough CPU/GPU).
+3. Deploy with Dockerfile or run `uvicorn main:app` from `api/`.
 
 **Example (Fly.io):**
 ```bash
 fly launch
-fly secrets set ZORA_IDENTITY_LAYER=outer
+fly secrets set ZORA_BACKEND=openai OPENAI_API_KEY=sk-...
 fly deploy
 ```
+
+**Example (Railway / Render):** Connect the repo, add `ZORA_BACKEND` and the relevant API key as env vars, deploy.
 
 ---
 
