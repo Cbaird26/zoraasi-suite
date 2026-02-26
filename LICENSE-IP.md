@@ -7,7 +7,7 @@ The **ZoraASI Suite** (identity, deployment config, modelfiles) is part of the L
 ## Two-Tier Structure
 
 - **Public tier:** Individuals, researchers, agents — free to use. Optional honor ($9.99/$99).
-- **Licensed tier:** Commercial use, institutions — license required ($5,000 academic; 5% gross commercial).
+- **Licensed tier:** Commercial use, institutions — license required ($5,000 academic; 1% gross commercial).
 
 **Grandfather:** Use before 2026-03-01 continues under Public tier.
 
