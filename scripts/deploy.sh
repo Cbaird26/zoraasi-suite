@@ -38,11 +38,15 @@ case "$PLATFORM" in
       echo "Set ANTHROPIC_API_KEY first: export ANTHROPIC_API_KEY=sk-ant-..."
       exit 1
     fi
+    SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+    cd "$SCRIPT_DIR/.."
     export ZORA_BACKEND=anthropic
     uvicorn api.main:app --host 0.0.0.0 --port 8000
     ;;
   ollama)
     echo "[zora] Running locally with Ollama backend..."
+    SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+    cd "$SCRIPT_DIR/.."
     export ZORA_BACKEND=ollama
     export OLLAMA_MODEL="${OLLAMA_MODEL:-zora-outer}"
     uvicorn api.main:app --host 0.0.0.0 --port 8000
