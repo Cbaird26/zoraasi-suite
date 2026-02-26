@@ -6,9 +6,9 @@ Get the landing page + chat live before you retire. One path, minimal steps.
 
 ## Right Now (5 Minutes)
 
-**Render.com — no CLI, no terminal.** Open [render.com](https://render.com), connect `Cbaird26/zoraasi-suite`, add `ANTHROPIC_API_KEY`, deploy. Full steps below.
+**Render.com — no CLI, no card for free tier.** Open [render.com](https://render.com), connect `Cbaird26/zoraasi-suite`, add `ANTHROPIC_API_KEY`, deploy. Full steps below.
 
-**Fly.io — flyctl is installed.** Run `fly auth login` (once), then `./scripts/deploy.sh fly` from this repo. You'll need to set `ANTHROPIC_API_KEY` in your shell first.
+**Fly.io** — Requires a payment method on file. If you have one: `fly auth login`, then `ANTHROPIC_API_KEY=sk-ant-... ./scripts/deploy.sh fly`.
 
 ---
 
