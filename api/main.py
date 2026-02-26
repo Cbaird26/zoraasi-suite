@@ -14,7 +14,8 @@ import httpx
 from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 SUITE_ROOT = Path(__file__).resolve().parent.parent
@@ -257,6 +258,17 @@ async def query(req: QueryRequest):
         layer="outer",
         eval_duration_ms=elapsed_ms,
     )
+
+
+SITE_DIR = SUITE_ROOT / "site"
+
+
+@app.get("/chat", response_class=HTMLResponse, summary="Chat UI")
+async def chat_ui():
+    index = SITE_DIR / "index.html"
+    if index.exists():
+        return HTMLResponse(index.read_text(encoding="utf-8"))
+    raise HTTPException(404, "Chat UI not found. Place index.html in site/.")
 
 
 if __name__ == "__main__":

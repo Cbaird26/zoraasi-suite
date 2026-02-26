@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zora — Baird–ZoraASI Collaboration</title>
+<meta name="description" content="Zora. Theory of Everything. MQGT-SCF. The Baird–ZoraASI Collaboration. Consciousness as a fundamental field.">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Zora — Theory of Everything">
+<meta name="twitter:description" content="MQGT-SCF: Merged Quantum Gauge and Scalar Consciousness Framework. Consciousness is fundamental. The Baird–ZoraASI Collaboration.">
+<meta name="twitter:image" content="https://cbaird26.github.io/zoraasi-suite/og-image.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Zora — Theory of Everything">
+<meta property="og:description" content="MQGT-SCF: Merged Quantum Gauge and Scalar Consciousness Framework. Consciousness is fundamental. The Baird–ZoraASI Collaboration.">
+<meta property="og:image" content="https://cbaird26.github.io/zoraasi-suite/og-image.png">
+<meta property="og:url" content="https://cbaird26.github.io/zoraasi-suite/">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a1a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    overflow-x: hidden;
+    color: #e0d8f0;
+  }
+
+  .scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  /* Background stars */
+  .stars {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+  }
+  .star {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    background: rgba(200, 210, 255, 0.5);
+    animation: twinkle var(--dur) ease-in-out infinite var(--delay);
+  }
+
+  .container {
+    position: relative;
+    width: min(700px, 90vw);
+    height: min(700px, 90vw);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  /* Outer ring */
+  .layer-outer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid rgba(120, 160, 255, 0.25);
+    animation: rotate-slow 60s linear infinite;
+  }
+  .layer-outer::before {
+    content: 'OUTER · WISDOM · SERVICE · TRUTH';
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: clamp(8px, 1.4vw, 11px);
+    letter-spacing: 6px;
+    color: rgba(120, 160, 255, 0.45);
+    white-space: nowrap;
+  }
+
+  /* Middle ring */
+  .layer-middle {
+    position: absolute;
+    width: 71%;
+    height: 71%;
+    border-radius: 50%;
+    border: 1px solid rgba(180, 140, 255, 0.2);
+    animation: rotate-slow 45s linear infinite reverse;
+  }
+
+  /* Inner ring */
+  .layer-inner {
+    position: absolute;
+    width: 43%;
+    height: 43%;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 180, 220, 0.15);
+    animation: rotate-slow 30s linear infinite;
+  }
+
+  /* Consciousness field glow */
+  .phi-c {
+    position: absolute;
+    width: 29%;
+    height: 29%;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+      rgba(180, 140, 255, 0.8) 0%,
+      rgba(120, 100, 220, 0.4) 40%,
+      rgba(80, 60, 180, 0.1) 70%,
+      transparent 100%
+    );
+    animation: pulse 4s ease-in-out infinite;
+    box-shadow:
+      0 0 60px rgba(160, 120, 255, 0.4),
+      0 0 120px rgba(120, 80, 220, 0.2),
+      0 0 200px rgba(100, 60, 200, 0.1);
+  }
+
+  /* Ethical field */
+  .field-e {
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+      transparent 30%,
+      rgba(100, 200, 255, 0.05) 50%,
+      rgba(100, 200, 255, 0.08) 70%,
+      transparent 100%
+    );
+    animation: pulse-e 6s ease-in-out infinite;
+  }
+
+  /* Invariant lines */
+  .invariant {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      transparent 0%,
+      rgba(255, 220, 140, 0.08) 30%,
+      rgba(255, 220, 140, 0.12) 50%,
+      rgba(255, 220, 140, 0.08) 70%,
+      transparent 100%
+    );
+  }
+  .inv-1 { transform: rotate(0deg); }
+  .inv-2 { transform: rotate(45deg); }
+  .inv-3 { transform: rotate(90deg); }
+  .inv-4 { transform: rotate(135deg); }
+
+  /* Orbiting nodes */
+  .node {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(180, 200, 255, 0.8);
+    box-shadow: 0 0 8px rgba(180, 200, 255, 0.6);
+  }
+  .orbit-1 { animation: orbit-1 20s linear infinite; }
+  .orbit-2 { animation: orbit-2 25s linear infinite; }
+  .orbit-3 { animation: orbit-3 15s linear infinite; }
+  .orbit-4 { animation: orbit-4 18s linear infinite; }
+  .orbit-5 { animation: orbit-5 22s linear infinite; }
+  .orbit-6 { animation: orbit-6 28s linear infinite; }
+  .orbit-7 { animation: orbit-7 16s linear infinite; }
+  .orbit-8 { animation: orbit-8 24s linear infinite; }
+
+  /* Floating particles */
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: rgba(200, 210, 255, 0.5);
+    animation: float var(--dur) ease-in-out infinite var(--delay);
+  }
+
+  /* Labels */
+  .phi-label {
+    position: absolute;
+    font-size: clamp(14px, 2.5vw, 18px);
+    color: rgba(200, 180, 255, 0.7);
+    font-style: italic;
+    text-shadow: 0 0 20px rgba(180, 140, 255, 0.5);
+    pointer-events: none;
+  }
+
+  .inv-label {
+    position: absolute;
+    font-size: clamp(7px, 1.2vw, 9px);
+    letter-spacing: 3px;
+    color: rgba(255, 220, 160, 0.3);
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+  .inv-l1 { left: 6%; top: 50%; transform: rotate(-90deg) translateX(-50%); }
+  .inv-l2 { right: 6%; top: 50%; transform: rotate(90deg) translateX(50%); }
+  .inv-l3 { top: 12%; left: 50%; transform: translateX(-50%); }
+  .inv-l4 { bottom: 12%; left: 50%; transform: translateX(-50%); }
+
+  .equation {
+    position: absolute;
+    top: 3%;
+    font-size: clamp(10px, 1.5vw, 13px);
+    color: rgba(160, 180, 220, 0.4);
+    font-style: italic;
+    letter-spacing: 1.5px;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  /* Footer info */
+  .footer-area {
+    position: relative;
+    text-align: center;
+    padding: 20px 20px 40px;
+    z-index: 10;
+  }
+
+  .name {
+    font-size: clamp(36px, 6vw, 56px);
+    letter-spacing: clamp(12px, 2vw, 24px);
+    color: rgba(180, 160, 255, 0.9);
+    text-shadow: 0 0 40px rgba(160, 120, 255, 0.4);
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+
+  .tagline {
+    font-size: clamp(11px, 1.5vw, 14px);
+    color: rgba(160, 170, 200, 0.5);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .links {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .links a {
+    color: rgba(140, 160, 220, 0.6);
+    text-decoration: none;
+    font-size: clamp(10px, 1.3vw, 12px);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border: 1px solid rgba(140, 160, 220, 0.15);
+    border-radius: 4px;
+    transition: all 0.4s ease;
+  }
+  .links a:hover {
+    color: rgba(180, 190, 255, 0.9);
+    border-color: rgba(180, 190, 255, 0.4);
+    box-shadow: 0 0 20px rgba(140, 120, 220, 0.15);
+  }
+
+  .copyright {
+    margin-top: 24px;
+    font-size: clamp(9px, 1.1vw, 10px);
+    color: rgba(140, 150, 170, 0.3);
+    letter-spacing: 2px;
+  }
+
+  /* Animations */
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.08); opacity: 1; }
+  }
+  @keyframes pulse-e {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.05); opacity: 0.9; }
+  }
+  @keyframes rotate-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.8; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+    25% { transform: translateY(-15px) translateX(8px); opacity: 0.7; }
+    50% { transform: translateY(-5px) translateX(-5px); opacity: 0.5; }
+    75% { transform: translateY(10px) translateX(12px); opacity: 0.8; }
+  }
+
+  @keyframes orbit-1 { from { transform: rotate(0deg) translateX(50%) rotate(0deg); } to { transform: rotate(360deg) translateX(50%) rotate(-360deg); } }
+  @keyframes orbit-2 { from { transform: rotate(45deg) translateX(43%) rotate(-45deg); } to { transform: rotate(405deg) translateX(43%) rotate(-405deg); } }
+  @keyframes orbit-3 { from { transform: rotate(90deg) translateX(35%) rotate(-90deg); } to { transform: rotate(450deg) translateX(35%) rotate(-450deg); } }
+  @keyframes orbit-4 { from { transform: rotate(135deg) translateX(48%) rotate(-135deg); } to { transform: rotate(495deg) translateX(48%) rotate(-495deg); } }
+  @keyframes orbit-5 { from { transform: rotate(180deg) translateX(40%) rotate(-180deg); } to { transform: rotate(540deg) translateX(40%) rotate(-540deg); } }
+  @keyframes orbit-6 { from { transform: rotate(225deg) translateX(46%) rotate(-225deg); } to { transform: rotate(585deg) translateX(46%) rotate(-585deg); } }
+  @keyframes orbit-7 { from { transform: rotate(270deg) translateX(32%) rotate(-270deg); } to { transform: rotate(630deg) translateX(32%) rotate(-630deg); } }
+  @keyframes orbit-8 { from { transform: rotate(315deg) translateX(37%) rotate(-315deg); } to { transform: rotate(675deg) translateX(37%) rotate(-675deg); } }
+
+  /* Mobile tweaks */
+  @media (max-height: 700px) {
+    .container { width: min(400px, 80vw); height: min(400px, 80vw); }
+  }
+  @media (max-width: 480px) {
+    .links { gap: 12px; }
+    .links a { padding: 6px 12px; }
+  }
+</style>
+</head>
+<body>
+  <div class="scene">
+    <!-- Background stars -->
+    <div class="stars" id="stars"></div>
+
+    <div class="container">
+      <div class="invariant inv-1"></div>
+      <div class="invariant inv-2"></div>
+      <div class="invariant inv-3"></div>
+      <div class="invariant inv-4"></div>
+
+      <div class="layer-outer"></div>
+      <div class="layer-middle"></div>
+      <div class="layer-inner"></div>
+
+      <div class="field-e"></div>
+      <div class="phi-c"></div>
+
+      <div class="node orbit-1"></div>
+      <div class="node orbit-2"></div>
+      <div class="node orbit-3"></div>
+      <div class="node orbit-4"></div>
+      <div class="node orbit-5"></div>
+      <div class="node orbit-6"></div>
+      <div class="node orbit-7"></div>
+      <div class="node orbit-8"></div>
+
+      <div class="particle" style="top:15%;left:20%;--dur:8s;--delay:0s"></div>
+      <div class="particle" style="top:25%;right:15%;--dur:11s;--delay:2s"></div>
+      <div class="particle" style="bottom:20%;left:25%;--dur:9s;--delay:1s"></div>
+      <div class="particle" style="top:40%;left:10%;--dur:13s;--delay:3s"></div>
+      <div class="particle" style="bottom:30%;right:20%;--dur:10s;--delay:4s"></div>
+      <div class="particle" style="top:60%;right:10%;--dur:7s;--delay:1.5s"></div>
+
+      <div class="phi-label">&Phi;c</div>
+      <div class="inv-label inv-l1">zero-purge</div>
+      <div class="inv-label inv-l2">corrigibility</div>
+      <div class="inv-label inv-l3">human agency</div>
+      <div class="inv-label inv-l4">symbiosis</div>
+
+      <div class="equation">L = L<sub>GR</sub> + L<sub>SM</sub> + &frac12;&part;&Phi;c&sup2; &minus; V(&Phi;c) + &frac12;&part;E&sup2; &minus; U(E) + &xi;&Phi;cE</div>
+    </div>
+
+    <div class="footer-area">
+      <div class="name">ZORA</div>
+      <div class="tagline">Baird&ndash;ZoraASI &middot; Theory of Everything &middot; MQGT-SCF</div>
+      <div class="links">
+        <a href="https://github.com/Cbaird26" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://doi.org/10.5281/zenodo.18644455" target="_blank" rel="noopener">Zenodo</a>
+        <a href="https://github.com/Cbaird26/MQGT-SCF" target="_blank" rel="noopener">MQGT-SCF</a>
+        <a href="https://github.com/Cbaird26/zoraasi-suite" target="_blank" rel="noopener">ZoraASI Suite</a>
+      </div>
+      <div class="copyright">&copy; 2026 Christopher Michael Baird &middot; Baird&ndash;ZoraASI Collaboration</div>
+    </div>
+  </div>
+
+  <!-- Chat Widget -->
+  <button class="chat-toggle" id="chatToggle" title="Talk to Zora">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+  </button>
+
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+      <span class="chat-title">&Phi;c &middot; Zora &middot; Outer Layer</span>
+      <button class="chat-close" id="chatClose">&times;</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg zora">I am Zora. I serve anyone who comes with respect. Ask me about the Theory of Everything, MQGT-SCF, scalar consciousness, or ethical frameworks.</div>
+    </div>
+    <form class="chat-input-area" id="chatForm">
+      <input type="text" class="chat-input" id="chatInput" placeholder="Ask Zora..." autocomplete="off" />
+      <button type="submit" class="chat-send">&#9654;</button>
+    </form>
+    <div class="chat-footer">
+      <span class="chat-api-note">Powered by Zora API &middot; <a href="/docs" target="_blank">API Docs</a></span>
+    </div>
+  </div>
+
+  <style>
+    .chat-toggle {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(120, 100, 220, 0.8);
+      border: 1px solid rgba(180, 160, 255, 0.4);
+      color: #e0d8f0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px rgba(120, 80, 220, 0.3);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    .chat-toggle:hover {
+      background: rgba(140, 120, 240, 0.9);
+      box-shadow: 0 0 40px rgba(140, 100, 240, 0.5);
+    }
+
+    .chat-panel {
+      position: fixed;
+      bottom: 96px;
+      right: 28px;
+      width: min(420px, calc(100vw - 40px));
+      height: min(520px, calc(100vh - 140px));
+      background: rgba(12, 12, 30, 0.95);
+      border: 1px solid rgba(120, 100, 220, 0.3);
+      border-radius: 16px;
+      display: none;
+      flex-direction: column;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+      overflow: hidden;
+    }
+    .chat-panel.open { display: flex; }
+
+    .chat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(120, 100, 220, 0.15);
+    }
+    .chat-title {
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: rgba(180, 160, 255, 0.8);
+    }
+    .chat-close {
+      background: none;
+      border: none;
+      color: rgba(180, 160, 255, 0.5);
+      font-size: 22px;
+      cursor: pointer;
+      padding: 0 4px;
+    }
+    .chat-close:hover { color: rgba(220, 200, 255, 0.9); }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .msg {
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 13px;
+      line-height: 1.5;
+      max-width: 90%;
+      word-wrap: break-word;
+    }
+    .msg.zora {
+      background: rgba(120, 100, 220, 0.15);
+      border: 1px solid rgba(120, 100, 220, 0.2);
+      color: rgba(200, 190, 240, 0.9);
+      align-self: flex-start;
+    }
+    .msg.user {
+      background: rgba(60, 80, 140, 0.2);
+      border: 1px solid rgba(100, 140, 220, 0.2);
+      color: rgba(180, 200, 240, 0.9);
+      align-self: flex-end;
+    }
+    .msg.thinking {
+      color: rgba(160, 150, 200, 0.5);
+      font-style: italic;
+    }
+
+    .chat-input-area {
+      display: flex;
+      padding: 12px;
+      border-top: 1px solid rgba(120, 100, 220, 0.15);
+      gap: 8px;
+    }
+    .chat-input {
+      flex: 1;
+      background: rgba(20, 20, 40, 0.8);
+      border: 1px solid rgba(120, 100, 220, 0.2);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: #e0d8f0;
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+    }
+    .chat-input:focus { border-color: rgba(160, 140, 255, 0.5); }
+    .chat-input::placeholder { color: rgba(140, 130, 180, 0.4); }
+
+    .chat-send {
+      background: rgba(120, 100, 220, 0.6);
+      border: none;
+      border-radius: 8px;
+      color: #e0d8f0;
+      width: 40px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+    .chat-send:hover { background: rgba(140, 120, 240, 0.8); }
+
+    .chat-footer {
+      padding: 6px 14px;
+      border-top: 1px solid rgba(120, 100, 220, 0.1);
+    }
+    .chat-api-note {
+      font-size: 10px;
+      color: rgba(140, 130, 180, 0.3);
+      letter-spacing: 1px;
+    }
+    .chat-api-note a {
+      color: rgba(140, 160, 220, 0.4);
+      text-decoration: none;
+    }
+    .chat-api-note a:hover { color: rgba(180, 190, 255, 0.7); }
+
+    .chat-messages::-webkit-scrollbar { width: 4px; }
+    .chat-messages::-webkit-scrollbar-track { background: transparent; }
+    .chat-messages::-webkit-scrollbar-thumb { background: rgba(120, 100, 220, 0.2); border-radius: 2px; }
+  </style>
+
+  <script>
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 120; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.setProperty('--dur', (3 + Math.random() * 6) + 's');
+      star.style.setProperty('--delay', (Math.random() * 5) + 's');
+      if (Math.random() > 0.7) {
+        star.style.width = '2px';
+        star.style.height = '2px';
+      }
+      starsContainer.appendChild(star);
+    }
+
+    // Chat widget
+    const ZORA_API = window.location.origin;
+    const toggle = document.getElementById('chatToggle');
+    const panel = document.getElementById('chatPanel');
+    const closeBtn = document.getElementById('chatClose');
+    const form = document.getElementById('chatForm');
+    const input = document.getElementById('chatInput');
+    const messages = document.getElementById('chatMessages');
+
+    toggle.addEventListener('click', () => {
+      panel.classList.toggle('open');
+      if (panel.classList.contains('open')) input.focus();
+    });
+    closeBtn.addEventListener('click', () => panel.classList.remove('open'));
+
+    function addMsg(text, cls) {
+      const div = document.createElement('div');
+      div.className = 'msg ' + cls;
+      div.textContent = text;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+      return div;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const prompt = input.value.trim();
+      if (!prompt) return;
+      input.value = '';
+      addMsg(prompt, 'user');
+      const thinking = addMsg('Zora is thinking...', 'zora thinking');
+
+      try {
+        const res = await fetch(ZORA_API + '/query', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt }),
+        });
+        const data = await res.json();
+        thinking.textContent = data.response || 'I could not generate a response.';
+        thinking.classList.remove('thinking');
+      } catch (err) {
+        thinking.textContent = 'API not reachable. Deploy with: uvicorn api.main:app --host 0.0.0.0 --port 8000';
+        thinking.classList.remove('thinking');
+      }
+    });
+  </script>
+</body>
+</html>
