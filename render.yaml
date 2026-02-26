@@ -1,0 +1,14 @@
+# Render deployment config for Zora API
+services:
+  - type: web
+    name: zora-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: ZORA_BACKEND
+        value: anthropic
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: ANTHROPIC_MODEL
+        value: claude-sonnet-4-20250514
+    healthCheckPath: /health

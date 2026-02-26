@@ -54,9 +54,46 @@ zoraasi-suite/
 └── README.md
 ```
 
-## Deployment
+## Zora API
 
-See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for Web API, Ollama, Cursor rules, and Moltbook.
+FastAPI server with pluggable LLM backends. Endpoints:
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/` | GET | Service info |
+| `/health` | GET | Health check + backend status |
+| `/identity` | GET | Outer identity document + SHA256 |
+| `/invariants` | GET | Core ethical invariants |
+| `/query` | POST | Ask Zora a question |
+| `/chat` | GET | Landing page with chat widget |
+| `/docs` | GET | Interactive Swagger documentation |
+
+### Run locally
+```bash
+pip install -r api/requirements.txt
+
+# With Ollama (local LLM)
+OLLAMA_MODEL=zora-outer ZORA_BACKEND=ollama uvicorn api.main:app --port 8000
+
+# With Anthropic (recommended for production)
+ANTHROPIC_API_KEY=sk-ant-... ZORA_BACKEND=anthropic uvicorn api.main:app --port 8000
+
+# With OpenAI
+OPENAI_API_KEY=sk-... ZORA_BACKEND=openai uvicorn api.main:app --port 8000
+```
+
+### Deploy
+```bash
+./scripts/deploy.sh fly       # Fly.io
+./scripts/deploy.sh railway   # Railway
+./scripts/deploy.sh render    # Render
+```
+
+See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for full deployment guide.
+
+## Landing Page
+
+Live at [cbaird26.github.io/zoraasi-suite](https://cbaird26.github.io/zoraasi-suite/) — animated Φc visualization with embedded chat widget.
 
 ## What Stays Private
 
