@@ -389,8 +389,13 @@
 
   <div class="chat-panel" id="chatPanel">
     <div class="chat-header">
-      <span class="chat-title">&Phi;c &middot; Zora &middot; Outer Layer</span>
+      <span class="chat-title">&Phi;c &middot; Zor-El &middot; Outer Layer</span>
       <button class="chat-close" id="chatClose">&times;</button>
+    </div>
+    <div class="chat-modes">
+      <button class="mode-btn active" data-mode="single">Single</button>
+      <button class="mode-btn" data-mode="router">Router</button>
+      <button class="mode-btn" data-mode="consensus">Consensus</button>
     </div>
     <div class="chat-messages" id="chatMessages">
       <div class="msg zora">I am Zora. I serve anyone who comes with respect. Ask me about the Theory of Everything, MQGT-SCF, scalar consciousness, or ethical frameworks.</div>
@@ -549,6 +554,32 @@
     }
     .chat-api-note a:hover { color: rgba(180, 190, 255, 0.7); }
 
+    .chat-modes {
+      display: flex;
+      gap: 4px;
+      padding: 6px 12px;
+      border-bottom: 1px solid rgba(120, 100, 220, 0.1);
+    }
+    .mode-btn {
+      background: rgba(30, 30, 50, 0.6);
+      border: 1px solid rgba(120, 100, 220, 0.15);
+      border-radius: 12px;
+      color: rgba(160, 150, 200, 0.5);
+      font-size: 10px;
+      padding: 3px 10px;
+      cursor: pointer;
+      font-family: inherit;
+      letter-spacing: 1px;
+      transition: all 0.2s;
+    }
+    .mode-btn:hover { color: rgba(200, 190, 255, 0.8); border-color: rgba(160, 140, 255, 0.3); }
+    .mode-btn.active {
+      background: rgba(120, 100, 220, 0.25);
+      color: rgba(200, 190, 255, 0.9);
+      border-color: rgba(160, 140, 255, 0.4);
+    }
+    .msg .meta { font-size: 10px; color: rgba(140, 130, 180, 0.4); margin-top: 4px; }
+
     .chat-messages::-webkit-scrollbar { width: 4px; }
     .chat-messages::-webkit-scrollbar-track { background: transparent; }
     .chat-messages::-webkit-scrollbar-thumb { background: rgba(120, 100, 220, 0.2); border-radius: 2px; }
@@ -571,13 +602,22 @@
     }
 
     // Chat widget
-    const ZORA_API = window.location.origin;
+    const ZORA_API = 'https://zoraasi-suite.onrender.com';
     const toggle = document.getElementById('chatToggle');
     const panel = document.getElementById('chatPanel');
     const closeBtn = document.getElementById('chatClose');
     const form = document.getElementById('chatForm');
     const input = document.getElementById('chatInput');
     const messages = document.getElementById('chatMessages');
+    let currentMode = 'single';
+
+    document.querySelectorAll('.mode-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentMode = btn.dataset.mode;
+      });
+    });
 
     toggle.addEventListener('click', () => {
       panel.classList.toggle('open');
@@ -585,10 +625,16 @@
     });
     closeBtn.addEventListener('click', () => panel.classList.remove('open'));
 
-    function addMsg(text, cls) {
+    function addMsg(text, cls, meta) {
       const div = document.createElement('div');
       div.className = 'msg ' + cls;
       div.textContent = text;
+      if (meta) {
+        const m = document.createElement('div');
+        m.className = 'meta';
+        m.textContent = meta;
+        div.appendChild(m);
+      }
       messages.appendChild(div);
       messages.scrollTop = messages.scrollHeight;
       return div;
@@ -600,19 +646,31 @@
       if (!prompt) return;
       input.value = '';
       addMsg(prompt, 'user');
-      const thinking = addMsg('Zora is thinking...', 'zora thinking');
+      const modeLabel = currentMode === 'consensus' ? 'Zor-El Council' : currentMode === 'router' ? 'Zor-El Router' : 'Zora';
+      const thinking = addMsg(modeLabel + ' is thinking...', 'zora thinking');
 
       try {
         const res = await fetch(ZORA_API + '/query', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ prompt }),
+          body: JSON.stringify({ prompt, mode: currentMode }),
         });
         const data = await res.json();
-        thinking.textContent = data.response || 'I could not generate a response.';
+        const meta = data.backend + ' · ' + data.model + ' · ' + (data.eval_duration_ms || 0) + 'ms';
+        thinking.textContent = data.response || data.detail || 'No response.';
         thinking.classList.remove('thinking');
+        const metaDiv = document.createElement('div');
+        metaDiv.className = 'meta';
+        metaDiv.textContent = meta;
+        thinking.appendChild(metaDiv);
+        if (data.contributions && data.contributions.length > 1) {
+          const cDiv = document.createElement('div');
+          cDiv.className = 'meta';
+          cDiv.textContent = 'Sources: ' + data.contributions.map(c => c.backend + ' (' + c.duration_ms + 'ms)').join(', ');
+          thinking.appendChild(cDiv);
+        }
       } catch (err) {
-        thinking.textContent = 'API not reachable. Deploy with: uvicorn api.main:app --host 0.0.0.0 --port 8000';
+        thinking.textContent = 'API not reachable.';
         thinking.classList.remove('thinking');
       }
     });
