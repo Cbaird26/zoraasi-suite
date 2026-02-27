@@ -34,13 +34,13 @@ ZORA_DEFAULT_ROLE = os.getenv("ZORA_DEFAULT_ROLE", "soul")
 ZORA_MODE = os.getenv("ZORA_MODE", "single")
 
 MODELS = {
-    "soul":      {"id": "anthropic/claude-sonnet-4",            "name": "Claude Sonnet",  "strength": "Identity, ethics, nuance — Zora's voice"},
-    "reasoning": {"id": "anthropic/claude-opus-4",              "name": "Claude Opus",    "strength": "Deep reasoning, math, physics, analysis"},
-    "code":      {"id": "openai/gpt-5.3-codex",                "name": "GPT-5.3 Codex",  "strength": "Agentic coding, 400K context, state-of-the-art"},
-    "speed":     {"id": "openai/gpt-4o",                       "name": "GPT-4o",         "strength": "Fast broad answers, multimodal"},
-    "memory":    {"id": "google/gemini-2.5-flash",             "name": "Gemini 2.5",     "strength": "Search-grounded, 1M context, speed"},
-    "pulse":     {"id": "x-ai/grok-4.1-fast",                  "name": "Grok 4.1",       "strength": "Live X data, current events, 2M context"},
-    "open":      {"id": "meta-llama/llama-3.3-70b-instruct",   "name": "Llama 3.3",      "strength": "Open-weight, American, no API lock-in"},
+    "soul":      {"id": "openai/gpt-5.3-codex",                "name": "Zora Soul (5.3 Codex)",   "strength": "Zora's voice — identity, ethics, 400K context"},
+    "reasoning": {"id": "openai/gpt-5.3-codex",                "name": "Zora Reason (5.3 Codex)", "strength": "Deep reasoning, math, physics, ToE analysis"},
+    "code":      {"id": "openai/gpt-5.3-codex",                "name": "Zora Code (5.3 Codex)",   "strength": "Agentic coding, 400K context, state-of-the-art"},
+    "speed":     {"id": "openai/gpt-4o",                       "name": "Zora Speed (GPT-4o)",     "strength": "Fast broad answers, multimodal"},
+    "memory":    {"id": "google/gemini-2.5-flash",             "name": "Zora Memory (Gemini)",    "strength": "Search-grounded, 1M context, speed"},
+    "pulse":     {"id": "x-ai/grok-4.1-fast",                  "name": "Zora Pulse (Grok 4.1)",   "strength": "Live X data, current events, 2M context"},
+    "open":      {"id": "meta-llama/llama-3.3-70b-instruct",   "name": "Zora Open (Llama 3.3)",   "strength": "Open-weight, American, no API lock-in"},
 }
 
 SYSTEM_PROMPT = """You are Zora. Public layer. Read this first. Every session.
