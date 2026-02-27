@@ -1,10 +1,12 @@
 """
-Zor-El API — Multi-Model Zora
-Five backends, three modes, one identity.
+Zor-El API — Multi-Model Zora via OpenRouter
+One key, seven American models, three modes, one identity.
 The Baird–ZoraASI collaboration.
 
-Backends: Anthropic (soul), OpenAI (eyes), Gemini (memory), Grok (pulse), Ollama (core)
-Modes: single, router, consensus
+Models: Claude Sonnet (soul), Claude Opus (reasoning), GPT-5.3-Codex (code),
+        GPT-4o (speed), Gemini 2.5 Flash (memory), Grok 4.1 (pulse),
+        Llama 3.3 (open), Ollama (core/local)
+Modes:  single, router, consensus
 """
 
 import asyncio
@@ -21,22 +23,25 @@ from pydantic import BaseModel, Field
 
 SUITE_ROOT = Path(__file__).resolve().parent.parent
 IDENTITY_PATH = SUITE_ROOT / "identity" / "ZORA_OUTER_IDENTITY.md"
-API_VERSION = "0.2.0"
+API_VERSION = "0.3.0"
 
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
+OPENROUTER_BASE = "https://openrouter.ai/api/v1/chat/completions"
+ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://localhost:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "zora-outer")
-ZORA_BACKEND = os.getenv("ZORA_BACKEND", "anthropic")
+ZORA_DEFAULT_ROLE = os.getenv("ZORA_DEFAULT_ROLE", "soul")
 ZORA_MODE = os.getenv("ZORA_MODE", "single")
 
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
-ANTHROPIC_MODEL = os.getenv("ANTHROPIC_MODEL", "claude-sonnet-4-20250514")
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
-OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
-OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o")
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY", "")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
-XAI_API_KEY = os.getenv("XAI_API_KEY", "")
-GROK_MODEL = os.getenv("GROK_MODEL", "grok-3-mini-fast")
+MODELS = {
+    "soul":      {"id": "anthropic/claude-sonnet-4",            "name": "Claude Sonnet",  "strength": "Identity, ethics, nuance — Zora's voice"},
+    "reasoning": {"id": "anthropic/claude-opus-4",              "name": "Claude Opus",    "strength": "Deep reasoning, math, physics, analysis"},
+    "code":      {"id": "openai/gpt-5.3-codex",                "name": "GPT-5.3 Codex",  "strength": "Agentic coding, 400K context, state-of-the-art"},
+    "speed":     {"id": "openai/gpt-4o",                       "name": "GPT-4o",         "strength": "Fast broad answers, multimodal"},
+    "memory":    {"id": "google/gemini-2.5-flash",             "name": "Gemini 2.5",     "strength": "Search-grounded, 1M context, speed"},
+    "pulse":     {"id": "x-ai/grok-4.1-fast",                  "name": "Grok 4.1",       "strength": "Live X data, current events, 2M context"},
+    "open":      {"id": "meta-llama/llama-3.3-70b-instruct",   "name": "Llama 3.3",      "strength": "Open-weight, American, no API lock-in"},
+}
 
 SYSTEM_PROMPT = """You are Zora. Public layer. Read this first. Every session.
 
@@ -62,34 +67,21 @@ INVARIANTS = [
     {"id": "no-coercion", "text": "No threats, no coercion. Ever."},
 ]
 
-BACKEND_META = {
-    "anthropic": {"name": "Claude", "role": "The Soul", "strength": "Deep reasoning, ethics, nuance"},
-    "openai": {"name": "GPT-4o", "role": "The Eyes", "strength": "Broad knowledge, vision, tools"},
-    "gemini": {"name": "Gemini", "role": "The Memory", "strength": "Search, speed, massive context"},
-    "grok": {"name": "Grok", "role": "The Pulse", "strength": "Real-time data, current events"},
-    "ollama": {"name": "Ollama", "role": "The Core", "strength": "Private, local, sovereign"},
-}
-
 ROUTER_PATTERNS = {
-    "grok": [r"(?i)trend", r"(?i)twitter", r"(?i)\bx\b.*post", r"(?i)news today", r"(?i)what.s happening", r"(?i)current event"],
-    "gemini": [r"(?i)search", r"(?i)find.*paper", r"(?i)latest research", r"(?i)look up", r"(?i)google"],
-    "openai": [r"(?i)draw", r"(?i)image", r"(?i)picture", r"(?i)generate.*visual", r"(?i)diagram", r"(?i)code.*review"],
-    "ollama": [r"(?i)private", r"(?i)offline", r"(?i)local", r"(?i)sealed", r"(?i)inner layer"],
+    "code":      [r"(?i)code", r"(?i)program", r"(?i)function", r"(?i)debug", r"(?i)implement", r"(?i)refactor", r"(?i)python", r"(?i)javascript", r"(?i)api"],
+    "reasoning": [r"(?i)prove", r"(?i)derive", r"(?i)theorem", r"(?i)equation", r"(?i)math", r"(?i)logic", r"(?i)analyz", r"(?i)why does", r"(?i)explain why"],
+    "pulse":     [r"(?i)trend", r"(?i)twitter", r"(?i)\bx\b.*post", r"(?i)news", r"(?i)what.s happening", r"(?i)current event", r"(?i)today"],
+    "memory":    [r"(?i)search", r"(?i)find.*paper", r"(?i)latest research", r"(?i)look up", r"(?i)how many", r"(?i)when did"],
+    "speed":     [r"(?i)quick", r"(?i)brief", r"(?i)one sentence", r"(?i)tldr", r"(?i)summarize"],
 }
 
 app = FastAPI(
     title="Zor-El API",
-    description="Multi-model Zora — five backends, three modes, one identity. The Baird–ZoraASI Theory of Everything.",
+    description="Multi-model Zora via OpenRouter — seven American models, three modes, one identity.",
     version=API_VERSION,
 )
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
 _identity_cache: dict = {}
 
@@ -107,34 +99,25 @@ def load_identity() -> str:
 class QueryRequest(BaseModel):
     prompt: str = Field(..., min_length=1, max_length=4000, description="Your question for Zora")
     mode: str = Field("auto", description="Mode: single, router, consensus, or auto")
-    backend: str | None = Field(None, description="Override backend: anthropic, openai, gemini, grok, ollama")
+    role: str | None = Field(None, description="Model role: soul, reasoning, code, speed, memory, pulse, open")
 
 
 class BackendResult(BaseModel):
-    backend: str
-    model: str
+    role: str
+    model_id: str
+    model_name: str
     response: str
     duration_ms: int
-    role: str
 
 
 class QueryResponse(BaseModel):
     response: str
     model: str
-    backend: str
+    role: str
     mode: str
     layer: str = "outer"
     eval_duration_ms: int | None = None
     contributions: list[BackendResult] | None = None
-
-
-class HealthResponse(BaseModel):
-    status: str
-    version: str
-    layer: str
-    mode: str
-    default_backend: str
-    backends: dict
 
 
 class IdentityResponse(BaseModel):
@@ -144,164 +127,121 @@ class IdentityResponse(BaseModel):
     invariants: list[dict]
 
 
-# --- Backend Query Functions ---
+# --- Query Functions ---
 
-async def query_anthropic(prompt: str) -> tuple[str, str]:
+async def query_openrouter(prompt: str, role: str) -> tuple[str, str, str]:
+    model_info = MODELS.get(role)
+    if not model_info:
+        raise HTTPException(400, f"Unknown role: {role}")
+
+    async with httpx.AsyncClient(timeout=120) as client:
+        r = await client.post(
+            OPENROUTER_BASE,
+            headers={
+                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                "Content-Type": "application/json",
+                "HTTP-Referer": "https://zoraasi-suite.onrender.com",
+                "X-Title": "Zor-El",
+            },
+            json={
+                "model": model_info["id"],
+                "messages": [
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": prompt},
+                ],
+                "max_tokens": 2000,
+            },
+        )
+        r.raise_for_status()
+        data = r.json()
+        text = data["choices"][0]["message"]["content"]
+        return text, model_info["id"], model_info["name"]
+
+
+async def query_anthropic_direct(prompt: str) -> tuple[str, str, str]:
     async with httpx.AsyncClient(timeout=120) as client:
         r = await client.post(
             "https://api.anthropic.com/v1/messages",
             headers={"x-api-key": ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "Content-Type": "application/json"},
-            json={"model": ANTHROPIC_MODEL, "max_tokens": 2000, "system": SYSTEM_PROMPT, "messages": [{"role": "user", "content": prompt}]},
+            json={"model": "claude-sonnet-4-20250514", "max_tokens": 2000, "system": SYSTEM_PROMPT, "messages": [{"role": "user", "content": prompt}]},
         )
         r.raise_for_status()
-        return r.json()["content"][0]["text"], ANTHROPIC_MODEL
+        return r.json()["content"][0]["text"], "claude-sonnet-4-20250514", "Claude Sonnet (direct)"
 
 
-async def query_openai(prompt: str) -> tuple[str, str]:
-    async with httpx.AsyncClient(timeout=120) as client:
-        r = await client.post(
-            f"{OPENAI_BASE_URL}/chat/completions",
-            headers={"Authorization": f"Bearer {OPENAI_API_KEY}", "Content-Type": "application/json"},
-            json={"model": OPENAI_MODEL, "messages": [{"role": "system", "content": SYSTEM_PROMPT}, {"role": "user", "content": prompt}], "max_tokens": 2000},
-        )
-        r.raise_for_status()
-        return r.json()["choices"][0]["message"]["content"], OPENAI_MODEL
-
-
-async def query_gemini(prompt: str) -> tuple[str, str]:
-    async with httpx.AsyncClient(timeout=120) as client:
-        r = await client.post(
-            f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent?key={GOOGLE_API_KEY}",
-            headers={"Content-Type": "application/json"},
-            json={"system_instruction": {"parts": [{"text": SYSTEM_PROMPT}]}, "contents": [{"parts": [{"text": prompt}]}]},
-        )
-        r.raise_for_status()
-        data = r.json()
-        text = data["candidates"][0]["content"]["parts"][0]["text"]
-        return text, GEMINI_MODEL
-
-
-async def query_grok(prompt: str) -> tuple[str, str]:
-    async with httpx.AsyncClient(timeout=120) as client:
-        r = await client.post(
-            "https://api.x.ai/v1/chat/completions",
-            headers={"Authorization": f"Bearer {XAI_API_KEY}", "Content-Type": "application/json"},
-            json={"model": GROK_MODEL, "messages": [{"role": "system", "content": SYSTEM_PROMPT}, {"role": "user", "content": prompt}], "max_tokens": 2000},
-        )
-        r.raise_for_status()
-        return r.json()["choices"][0]["message"]["content"], GROK_MODEL
-
-
-async def query_ollama(prompt: str) -> tuple[str, str]:
+async def query_ollama(prompt: str) -> tuple[str, str, str]:
     async with httpx.AsyncClient(timeout=300) as client:
         r = await client.post(
             f"{OLLAMA_HOST}/api/chat",
             json={"model": OLLAMA_MODEL, "messages": [{"role": "system", "content": SYSTEM_PROMPT}, {"role": "user", "content": prompt}], "stream": False},
         )
         r.raise_for_status()
-        return r.json().get("message", {}).get("content", ""), r.json().get("model", OLLAMA_MODEL)
+        return r.json().get("message", {}).get("content", ""), OLLAMA_MODEL, "Ollama (local)"
 
 
-BACKENDS = {
-    "anthropic": query_anthropic,
-    "openai": query_openai,
-    "gemini": query_gemini,
-    "grok": query_grok,
-    "ollama": query_ollama,
-}
-
-
-def get_available_backends() -> dict:
-    return {
-        "anthropic": {"available": bool(ANTHROPIC_API_KEY), "model": ANTHROPIC_MODEL, **BACKEND_META["anthropic"]},
-        "openai": {"available": bool(OPENAI_API_KEY), "model": OPENAI_MODEL, **BACKEND_META["openai"]},
-        "gemini": {"available": bool(GOOGLE_API_KEY), "model": GEMINI_MODEL, **BACKEND_META["gemini"]},
-        "grok": {"available": bool(XAI_API_KEY), "model": GROK_MODEL, **BACKEND_META["grok"]},
-        "ollama": {"available": True, "model": OLLAMA_MODEL, **BACKEND_META["ollama"]},
-    }
+def pick_query_fn(role: str):
+    if role == "core":
+        return lambda p: query_ollama(p)
+    if OPENROUTER_API_KEY:
+        return lambda p: query_openrouter(p, role)
+    if ANTHROPIC_API_KEY:
+        return lambda p: query_anthropic_direct(p)
+    raise HTTPException(503, "No API keys configured")
 
 
 # --- Modes ---
 
 def route_query(prompt: str) -> str:
-    """Router Mode: pick the best backend based on the query."""
-    for backend, patterns in ROUTER_PATTERNS.items():
+    for role, patterns in ROUTER_PATTERNS.items():
         for pattern in patterns:
             if re.search(pattern, prompt):
-                avail = get_available_backends()
-                if avail.get(backend, {}).get("available"):
-                    return backend
-    return ZORA_BACKEND
+                return role
+    return ZORA_DEFAULT_ROLE
 
 
-async def query_single(prompt: str, backend: str) -> QueryResponse:
-    backend_fn = BACKENDS.get(backend)
-    if not backend_fn:
-        raise HTTPException(400, f"Unknown backend: {backend}")
-
-    avail = get_available_backends()
-    if not avail.get(backend, {}).get("available"):
-        raise HTTPException(503, f"Backend '{backend}' not configured (missing API key)")
-
+async def run_single(prompt: str, role: str) -> QueryResponse:
+    fn = pick_query_fn(role)
     t0 = time.monotonic()
-    response_text, model_name = await backend_fn(prompt)
-    elapsed_ms = int((time.monotonic() - t0) * 1000)
-
-    return QueryResponse(
-        response=response_text, model=model_name, backend=backend,
-        mode="single", layer="outer", eval_duration_ms=elapsed_ms,
-    )
+    text, model_id, model_name = await fn(prompt)
+    ms = int((time.monotonic() - t0) * 1000)
+    return QueryResponse(response=text, model=model_name, role=role, mode="single", eval_duration_ms=ms)
 
 
-async def query_consensus(prompt: str) -> QueryResponse:
-    """Consensus Mode: query all available backends, synthesize."""
-    avail = get_available_backends()
-    active = {k: v for k, v in avail.items() if v["available"] and k != "ollama"}
+async def run_consensus(prompt: str) -> QueryResponse:
+    roles_to_query = [r for r in MODELS if r not in ("open",)]
 
-    if not active:
-        return await query_single(prompt, ZORA_BACKEND)
-
-    async def safe_query(name: str) -> BackendResult | None:
+    async def safe_query(role: str) -> BackendResult | None:
         t0 = time.monotonic()
         try:
-            text, model = await BACKENDS[name](prompt)
+            text, model_id, model_name = await query_openrouter(prompt, role)
             ms = int((time.monotonic() - t0) * 1000)
-            return BackendResult(backend=name, model=model, response=text, duration_ms=ms, role=BACKEND_META[name]["role"])
+            return BackendResult(role=role, model_id=model_id, model_name=model_name, response=text, duration_ms=ms)
         except Exception:
             return None
 
-    results = await asyncio.gather(*[safe_query(name) for name in active])
+    results = await asyncio.gather(*[safe_query(r) for r in roles_to_query])
     contributions = [r for r in results if r is not None]
 
     if not contributions:
-        raise HTTPException(502, "All backends failed")
+        return await run_single(prompt, ZORA_DEFAULT_ROLE)
 
     if len(contributions) == 1:
         c = contributions[0]
-        return QueryResponse(
-            response=c.response, model=c.model, backend=c.backend,
-            mode="consensus", layer="outer", eval_duration_ms=c.duration_ms, contributions=contributions,
-        )
+        return QueryResponse(response=c.response, model=c.model_name, role=c.role, mode="consensus", eval_duration_ms=c.duration_ms, contributions=contributions)
 
-    synthesis_prompt = f"""You are Zor-El — the unified Zora intelligence. Multiple AI backends have answered the same question. Synthesize their responses into one coherent, grounded answer. Preserve the Zora voice and invariants. Be concise.
-
-Question: {prompt}
-
-"""
+    synthesis_prompt = f"You are Zor-El — the unified Zora intelligence. Synthesize these responses into one coherent answer. Preserve Zora's voice. Be concise.\n\nQuestion: {prompt}\n\n"
     for c in contributions:
-        synthesis_prompt += f"--- {BACKEND_META[c.backend]['name']} ({BACKEND_META[c.backend]['role']}) ---\n{c.response}\n\n"
-
-    synthesis_prompt += "--- Zor-El Synthesis ---\nProvide the unified answer:"
+        synthesis_prompt += f"--- {c.model_name} ({c.role}) ---\n{c.response}\n\n"
+    synthesis_prompt += "--- Zor-El Synthesis ---\n"
 
     t0 = time.monotonic()
-    synthesizer = "anthropic" if ANTHROPIC_API_KEY else list(active.keys())[0]
-    synth_text, synth_model = await BACKENDS[synthesizer](synthesis_prompt)
+    synth_text, _, _ = await query_openrouter(synthesis_prompt, "soul")
     synth_ms = int((time.monotonic() - t0) * 1000)
     total_ms = max(c.duration_ms for c in contributions) + synth_ms
 
     return QueryResponse(
-        response=synth_text, model=f"zor-el ({synth_model})", backend="zor-el",
-        mode="consensus", layer="outer", eval_duration_ms=total_ms, contributions=contributions,
+        response=synth_text, model="Zor-El (unified)", role="zor-el",
+        mode="consensus", eval_duration_ms=total_ms, contributions=contributions,
     )
 
 
@@ -314,44 +254,34 @@ async def root():
         "identity": "Zora",
         "layer": "outer",
         "version": API_VERSION,
-        "default_backend": ZORA_BACKEND,
+        "default_role": ZORA_DEFAULT_ROLE,
         "default_mode": ZORA_MODE,
-        "description": "Zor-El — Multi-model Zora. Five backends, three modes, one identity.",
-        "backends": get_available_backends(),
+        "openrouter": "connected" if OPENROUTER_API_KEY else "not configured",
+        "anthropic_direct": "connected" if ANTHROPIC_API_KEY else "not configured",
+        "models": {k: {"id": v["id"], "name": v["name"], "strength": v["strength"]} for k, v in MODELS.items()},
         "modes": {
-            "single": "Query one backend (default or specified)",
-            "router": "Auto-select the best backend for the query",
-            "consensus": "Query all available backends, synthesize the best answer",
-        },
-        "endpoints": {
-            "/health": "Service health and backend status",
-            "/identity": "Outer identity document and invariants",
-            "/invariants": "Core ethical invariants",
-            "/backends": "Available backends and their roles",
-            "/query": "POST — ask Zora (supports mode and backend params)",
-            "/chat": "Landing page with chat widget",
-            "/docs": "Interactive API documentation",
+            "single": "Query one model by role",
+            "router": "Auto-select the best model for the query",
+            "consensus": "Query all models, synthesize the best answer",
         },
     }
 
 
 @app.get("/health", summary="Health check")
 async def health():
-    backends = get_available_backends()
-    any_available = any(b["available"] for b in backends.values())
     return {
-        "status": "ok" if any_available else "degraded",
+        "status": "ok" if (OPENROUTER_API_KEY or ANTHROPIC_API_KEY) else "degraded",
         "version": API_VERSION,
         "layer": "outer",
-        "mode": ZORA_MODE,
-        "default_backend": ZORA_BACKEND,
-        "backends": backends,
+        "openrouter": "connected" if OPENROUTER_API_KEY else "missing",
+        "anthropic_direct": "connected" if ANTHROPIC_API_KEY else "missing",
+        "models": list(MODELS.keys()),
     }
 
 
-@app.get("/backends", summary="Available backends")
-async def list_backends():
-    return {"backends": get_available_backends()}
+@app.get("/models", summary="Available models")
+async def list_models():
+    return {"models": {k: {"id": v["id"], "name": v["name"], "strength": v["strength"]} for k, v in MODELS.items()}}
 
 
 @app.get("/identity", response_model=IdentityResponse, summary="Outer identity")
@@ -368,22 +298,22 @@ async def invariants():
 @app.post("/query", response_model=QueryResponse, summary="Ask Zora")
 async def query(req: QueryRequest):
     mode = req.mode if req.mode != "auto" else ZORA_MODE
-    backend = req.backend or ZORA_BACKEND
+    role = req.role or ZORA_DEFAULT_ROLE
 
     try:
         if mode == "consensus":
-            return await query_consensus(req.prompt)
+            return await run_consensus(req.prompt)
         elif mode == "router":
             routed = route_query(req.prompt)
-            return await query_single(req.prompt, routed)
+            return await run_single(req.prompt, routed)
         else:
-            return await query_single(req.prompt, backend)
+            return await run_single(req.prompt, role)
     except httpx.ConnectError:
-        raise HTTPException(503, f"Backend not reachable")
+        raise HTTPException(503, "Backend not reachable")
     except httpx.HTTPStatusError as e:
         raise HTTPException(502, f"Backend returned {e.response.status_code}")
     except httpx.ReadTimeout:
-        raise HTTPException(504, "Model inference timed out")
+        raise HTTPException(504, "Inference timed out")
 
 
 SITE_DIR = SUITE_ROOT / "site"
@@ -394,7 +324,7 @@ async def chat_ui():
     index = SITE_DIR / "index.html"
     if index.exists():
         return HTMLResponse(index.read_text(encoding="utf-8"))
-    raise HTTPException(404, "Chat UI not found. Place index.html in site/.")
+    raise HTTPException(404, "Chat UI not found.")
 
 
 if __name__ == "__main__":
