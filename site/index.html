@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zor-El — Multi-Model Zora</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -40,10 +41,11 @@
         .mode-selector {
             display: flex;
             gap: 12px;
-            margin-bottom: 24px;
+            margin-bottom: 12px;
             justify-content: center;
+            flex-wrap: wrap;
         }
-        .mode-btn {
+        .mode-btn, .role-btn {
             padding: 10px 20px;
             border: 2px solid #6b46c1;
             background: #2a2a3e;
@@ -54,13 +56,31 @@
             font-weight: bold;
             transition: all 0.3s;
         }
-        .mode-btn.active {
+        .mode-btn.active, .role-btn.active {
             background: #6b46c1;
             color: white;
         }
-        .mode-btn:hover {
+        .mode-btn:hover, .role-btn:hover {
             background: #5a35a1;
             color: white;
+        }
+        .role-selector {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .role-btn {
+            padding: 6px 14px;
+            font-size: 12px;
+            border-color: #4a3a8e;
+        }
+        .role-selector-label {
+            text-align: center;
+            color: #7a7a9a;
+            font-size: 0.8em;
+            margin-bottom: 6px;
         }
         #messages {
             height: 400px;
@@ -71,10 +91,19 @@
             border-radius: 8px;
             border: 1px solid #3a3a5e;
         }
+        @media (max-width: 600px) {
+            #chat-container { padding: 14px; }
+            #messages { height: 50vh; padding: 10px; }
+            h1 { font-size: 1.5em; }
+            .mode-btn { padding: 8px 14px; font-size: 12px; }
+            .role-btn { padding: 5px 10px; font-size: 11px; }
+        }
         .message {
             margin-bottom: 16px;
             padding: 12px;
             border-radius: 8px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         .user-message {
             background: #2a2a4e;
@@ -85,6 +114,10 @@
             margin-right: 40px;
             border-left: 3px solid #6b46c1;
         }
+        @media (max-width: 600px) {
+            .user-message { margin-left: 10px; }
+            .zora-message { margin-right: 10px; }
+        }
         .message-label {
             font-weight: bold;
             margin-bottom: 6px;
@@ -92,6 +125,30 @@
         }
         .user-message .message-label { color: #8899ff; }
         .zora-message .message-label { color: #c299ff; }
+        .zora-message .response-content h1,
+        .zora-message .response-content h2,
+        .zora-message .response-content h3 { color: #c299ff; margin: 8px 0 4px; }
+        .zora-message .response-content h1 { font-size: 1.2em; }
+        .zora-message .response-content h2 { font-size: 1.1em; }
+        .zora-message .response-content h3 { font-size: 1.0em; }
+        .zora-message .response-content p { margin: 6px 0; line-height: 1.5; }
+        .zora-message .response-content code {
+            background: #0a0a1a; padding: 2px 6px; border-radius: 3px;
+            font-family: 'Courier New', monospace; font-size: 0.9em; color: #99ccff;
+        }
+        .zora-message .response-content pre {
+            background: #0a0a1a; padding: 10px; border-radius: 6px; overflow-x: auto;
+            margin: 8px 0; border: 1px solid #3a3a5e;
+        }
+        .zora-message .response-content pre code { padding: 0; background: none; }
+        .zora-message .response-content ul, .zora-message .response-content ol {
+            margin: 6px 0; padding-left: 20px;
+        }
+        .zora-message .response-content li { margin: 3px 0; line-height: 1.4; }
+        .zora-message .response-content blockquote {
+            border-left: 3px solid #6b46c1; padding-left: 10px; margin: 8px 0;
+            color: #aabbcc; font-style: italic;
+        }
         .metadata {
             margin-top: 8px;
             padding: 8px;
@@ -150,36 +207,42 @@
             cursor: pointer;
             transition: background 0.3s;
         }
-        #send-btn:hover {
-            background: #5a35a1;
+        #send-btn:hover { background: #5a35a1; }
+        #send-btn:disabled { background: #3a3a5e; cursor: not-allowed; }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
         }
-        #send-btn:disabled {
-            background: #3a3a5e;
-            cursor: not-allowed;
+        .thinking-dots span {
+            animation: pulse 1.4s infinite;
+            display: inline-block;
+            font-size: 1.4em;
         }
-        .thinking {
-            font-style: italic;
-            color: #8899aa;
-        }
+        .thinking-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .thinking-dots span:nth-child(3) { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
     <div id="chat-container">
         <h1>ZOR-EL</h1>
-        <div class="subtitle">Multi-Model Zora — Five Backends, Three Modes, One Identity</div>
-        
+        <div class="subtitle">Multi-Model Zora — Seven Models, Three Modes, One Identity</div>
+
         <div class="mode-selector">
-      <button class="mode-btn active" data-mode="single">Single</button>
-      <button class="mode-btn" data-mode="router">Router</button>
-      <button class="mode-btn" data-mode="consensus">Consensus</button>
-    </div>
-    <div class="chat-modes" id="roleSelector" style="display:none">
-      <button class="role-btn active" data-role="soul">Soul</button>
-      <button class="role-btn" data-role="reasoning">Reason</button>
-      <button class="role-btn" data-role="code">Code</button>
-      <button class="role-btn" data-role="speed">Speed</button>
-      <button class="role-btn" data-role="memory">Memory</button>
-      <button class="role-btn" data-role="pulse">Pulse</button>
+            <button class="mode-btn active" data-mode="single">Single</button>
+            <button class="mode-btn" data-mode="router">Router</button>
+            <button class="mode-btn" data-mode="consensus">Consensus</button>
+        </div>
+        <div id="roleSelector">
+            <div class="role-selector-label">Select Model Role</div>
+            <div class="role-selector">
+                <button class="role-btn active" data-role="soul">Soul</button>
+                <button class="role-btn" data-role="reasoning">Reason</button>
+                <button class="role-btn" data-role="code">Code</button>
+                <button class="role-btn" data-role="speed">Speed</button>
+                <button class="role-btn" data-role="memory">Memory</button>
+                <button class="role-btn" data-role="pulse">Pulse</button>
+                <button class="role-btn" data-role="open">Open</button>
+            </div>
         </div>
 
         <div id="messages"></div>
@@ -192,24 +255,52 @@
 
     <script>
         let currentMode = 'single';
+        let currentRole = 'soul';
         const messagesDiv = document.getElementById('messages');
         const promptInput = document.getElementById('prompt-input');
         const sendBtn = document.getElementById('send-btn');
+        const roleSelector = document.getElementById('roleSelector');
 
-        // Mode selector
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function renderMarkdown(text) {
+            if (typeof marked !== 'undefined') {
+                return marked.parse(text);
+            }
+            return '<p>' + escapeHtml(text).replace(/\n/g, '<br>') + '</p>';
+        }
+
+        function updateRoleSelectorVisibility() {
+            roleSelector.style.display = (currentMode === 'single') ? 'block' : 'none';
+        }
+
         document.querySelectorAll('.mode-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 currentMode = btn.dataset.mode;
-                addSystemMessage(`Mode switched to: ${currentMode}`);
+                updateRoleSelectorVisibility();
+                addSystemMessage(`Mode: ${currentMode}`);
+            });
+        });
+
+        document.querySelectorAll('.role-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentRole = btn.dataset.role;
+                addSystemMessage(`Role: ${currentRole}`);
             });
         });
 
         function addSystemMessage(text) {
             const msg = document.createElement('div');
             msg.className = 'message';
-            msg.innerHTML = `<div class="message-label" style="color: #9999bb;">System</div><div style="font-style: italic; color: #9999bb;">${text}</div>`;
+            msg.innerHTML = `<div class="message-label" style="color: #9999bb;">System</div><div style="font-style: italic; color: #9999bb;">${escapeHtml(text)}</div>`;
             messagesDiv.appendChild(msg);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
@@ -217,7 +308,7 @@
         function addUserMessage(text) {
             const msg = document.createElement('div');
             msg.className = 'message user-message';
-            msg.innerHTML = `<div class="message-label">You</div><div>${text}</div>`;
+            msg.innerHTML = `<div class="message-label">You</div><div>${escapeHtml(text)}</div>`;
             messagesDiv.appendChild(msg);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
         }
@@ -225,22 +316,21 @@
         function addZoraMessage(data) {
             const msg = document.createElement('div');
             msg.className = 'message zora-message';
-            
-            let html = `<div class="message-label">Zora</div><div>${data.response}</div>`;
-            
-            // Add metadata
+
+            let html = `<div class="message-label">Zora</div><div class="response-content">${renderMarkdown(data.response)}</div>`;
+
             html += `<div class="metadata">
                 <div class="metadata-row">
                     <span class="metadata-label">Mode:</span>
-                    <span class="metadata-value">${data.mode}</span>
+                    <span class="metadata-value">${escapeHtml(data.mode)}</span>
                 </div>
                 <div class="metadata-row">
-                    <span class="metadata-label">Backend:</span>
-                    <span class="metadata-value">${data.backend}</span>
+                    <span class="metadata-label">Role:</span>
+                    <span class="metadata-value">${escapeHtml(data.role)}</span>
                 </div>
                 <div class="metadata-row">
                     <span class="metadata-label">Model:</span>
-                    <span class="metadata-value">${data.model}</span>
+                    <span class="metadata-value">${escapeHtml(data.model)}</span>
                 </div>
                 <div class="metadata-row">
                     <span class="metadata-label">Duration:</span>
@@ -248,16 +338,15 @@
                 </div>
                 <div class="metadata-row">
                     <span class="metadata-label">Layer:</span>
-                    <span class="metadata-value">${data.layer}</span>
+                    <span class="metadata-value">${escapeHtml(data.layer)}</span>
                 </div>
             </div>`;
 
-            // Add contributions if consensus mode
             if (data.contributions && data.contributions.length > 0) {
                 html += `<div class="contributions"><strong>Contributions:</strong>`;
                 data.contributions.forEach(c => {
                     html += `<div class="contribution">
-                        <strong>${c.backend}</strong> (${c.role}) — ${c.model} — ${c.duration_ms}ms
+                        <strong>${escapeHtml(c.model_name)}</strong> (${escapeHtml(c.role)}) — ${escapeHtml(c.model_id)} — ${c.duration_ms}ms
                     </div>`;
                 });
                 html += `</div>`;
@@ -270,9 +359,9 @@
 
         function addThinkingMessage() {
             const msg = document.createElement('div');
-            msg.className = 'message zora-message thinking';
+            msg.className = 'message zora-message';
             msg.id = 'thinking-message';
-            msg.innerHTML = `<div class="message-label">Zora</div><div>Thinking...</div>`;
+            msg.innerHTML = `<div class="message-label">Zora</div><div class="thinking-dots"><span>.</span><span>.</span><span>.</span></div>`;
             messagesDiv.appendChild(msg);
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
             return msg;
@@ -288,15 +377,19 @@
 
             const thinkingMsg = addThinkingMessage();
 
+            const body = { prompt, mode: currentMode };
+            if (currentMode === 'single') body.role = currentRole;
+
             try {
                 const response = await fetch('/query', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ prompt, mode: currentMode })
+                    body: JSON.stringify(body)
                 });
 
                 if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}`);
+                    const errData = await response.json().catch(() => null);
+                    throw new Error(errData?.detail || `HTTP ${response.status}`);
                 }
 
                 const data = await response.json();
@@ -316,8 +409,8 @@
             if (e.key === 'Enter') sendMessage();
         });
 
-        // Welcome message
-        addSystemMessage('Connected to Zor-El. Select a mode and start asking questions.');
+        updateRoleSelectorVisibility();
+        addSystemMessage('Connected to Zor-El. Select a mode and start asking.');
         promptInput.focus();
     </script>
 </body>
