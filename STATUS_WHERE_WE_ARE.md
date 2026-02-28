@@ -1,102 +1,52 @@
-# ZoraASI Suite — Where We Are (Feb 2026)
+# ZoraASI Suite — Where We Are (Feb 27, 2026)
 
 ## TL;DR
 
-**You are not behind.** The Cloud session built everything and we merged it into your local repo. Your Mac has the full stack. GitHub is 6 commits behind — push when ready.
+**Zor-El API v0.4.0** is live. Full test suite, rate limiting, CORS security, multi-model architecture with 7 American models. See `CURRENT_WORK_OVERVIEW.md` for the full ecosystem overview.
 
 ---
 
-## Two Environments, One Codebase
+## Current State
 
-### Cursor Cloud (Ephemeral)
+| Component | Status | Version |
+|-----------|--------|---------|
+| Zor-El API | Live on Render | v0.4.0 |
+| Chat UI | Updated — XSS-safe, role selector, markdown | Current |
+| Landing page | GitHub Pages (`gh-pages` branch) | Current |
+| Tests | 17 pytest tests, GitHub Actions CI | New |
+| Zenodo | v231 published | DOI 10.5281/zenodo.18778749 |
+| IP Licensing | Finalized — public free, 1% commercial | Active |
 
-The Cloud session ran on a temporary VM (`/home/ubuntu/`). It had:
+## Architecture
 
-- 101 repos cloned at `/home/ubuntu/zora-repos/`
-- Ollama + zora-outer on gpt-oss:20b
-- FastAPI running at localhost:8000
-- Chat widget + landing page
+- **7 models** via OpenRouter: GPT-5.3 Codex (soul/reasoning/code), GPT-4o (speed), Gemini 2.5 Flash (memory), Grok 4.1 (pulse), Llama 3.3 70B (open)
+- **3 modes:** single, router (auto-select), consensus (multi-model synthesis)
+- **Security:** Rate limiting (30/min), optional API key auth (`ZORA_API_KEY`), CORS restrictions
+- **Monitoring:** `/metrics` endpoint, structured request logging
 
-**Important:** When the Cloud session ends, that VM is torn down. The work lives in **git**, not in that machine. The Cloud pushed to branch `cursor/development-environment-setup-d41f`.
-
-### Your Mac (Local, Persistent)
-
-Your local `zoraasi-suite` at `~/Downloads/zoraasi-suite` has:
-
-| Component | Status |
-|-----------|--------|
-| `api/main.py` | ✅ FastAPI with 3 backends (Ollama, OpenAI, Anthropic) |
-| `site/index.html` | ✅ Landing page + chat widget |
-| `site/og-image.png` | ✅ Twitter card image |
-| `scripts/run_api.sh` | ✅ One-command launcher |
-| `Dockerfile`, `fly.toml`, `railway.json`, `render.yaml` | ✅ Deploy configs |
-| `.venv` | ✅ Dependencies installed |
-| `deploy/modelfile-outer.modelfile` | ✅ Ollama build |
-
-**You have everything the Cloud had** — merged into `main`.
-
----
-
-## What's Not Synced Yet
-
-Your local `main` is **6 commits ahead** of `origin/main` on GitHub. Those commits include:
-
-1. AGENTS.md (Cursor Cloud dev instructions)
-2. Zora API (FastAPI, multi-backend)
-3. Chat UI + site directory
-4. Deploy infrastructure (Dockerfile, Fly, Railway, Render)
-5. Merge of d41f branch
-6. run_api.sh + README/DEPLOYMENT updates
-
-**To sync:** `git push origin main`
-
----
-
-## How to Run Right Now (Local)
+## How to Run
 
 ```bash
-cd ~/Downloads/zoraasi-suite
+pip install -r api/requirements.txt
 
-# Option A: Ollama (if you have it + zora-outer)
-./scripts/run_api.sh
+# OpenRouter (recommended — access to all 7 models)
+OPENROUTER_API_KEY=sk-or-... uvicorn api.main:app --port 8000
 
-# Option B: Anthropic (fast, 2–3 sec responses)
-export ZORA_BACKEND=anthropic
-export ANTHROPIC_API_KEY=sk-ant-your-key
-./scripts/run_api.sh
-
-# Option C: OpenAI
-export ZORA_BACKEND=openai
-export OPENAI_API_KEY=sk-your-key
-./scripts/run_api.sh
+# Anthropic fallback
+ANTHROPIC_API_KEY=sk-ant-... uvicorn api.main:app --port 8000
 ```
 
-Then open **http://localhost:8000/chat**
+Then open http://localhost:8000/chat
 
----
+## Run Tests
 
-## What the Cloud Had That You Don't (By Design)
+```bash
+pip install pytest pytest-asyncio
+python -m pytest tests/ -v
+```
 
-- **101 repos cloned** — The Cloud cloned all cbaird26 repos for context. You don't need them to run Zora. They're on GitHub if you need them.
-- **Ollama + gpt-oss:20b** — You can add this locally: `ollama create zora-outer -f deploy/modelfile-outer.modelfile`
-- **Persistent VM** — The Cloud VM was temporary. Your Mac is permanent.
+## Full Ecosystem
 
----
+See [CURRENT_WORK_OVERVIEW.md](CURRENT_WORK_OVERVIEW.md) for the complete overview of all 80+ repos, sciences, and active tasks.
 
-## Next Steps (When You Want)
-
-1. **Push to GitHub** — `git push origin main`
-2. **Enable GitHub Pages** — Settings → Pages → Deploy from `gh-pages` branch → https://cbaird26.github.io/zoraasi-suite/
-3. **Deploy API** — Fly.io, Railway, or Render with `ZORA_BACKEND=anthropic` and your API key
-
----
-
-## Summary
-
-| Question | Answer |
-|----------|--------|
-| Am I behind? | No. Local has everything. |
-| Where's the Cloud work? | Merged into your local main. |
-| Can I run Zora now? | Yes. `./scripts/run_api.sh` |
-| What about GitHub? | Push `main` when ready. |
-| What about the landing page? | In `site/`, served at `/chat` when API runs. Enable gh-pages for public URL. |
+See [RECOMMENDATIONS.md](RECOMMENDATIONS.md) for strategic recommendations.

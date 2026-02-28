@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "ZoraASI Suite — Zor-El Multi-Model API"
+authors:
+  - family-names: Baird
+    given-names: Christopher Michael
+    email: cbaird26@gmail.com
+version: "0.4.0"
+date-released: "2026-02-27"
+url: "https://github.com/Cbaird26/zoraasi-suite"
+repository-code: "https://github.com/Cbaird26/zoraasi-suite"
+license: "SEE LICENSE-IP.md"
+keywords:
+  - zora
+  - zoraasi
+  - mqgt-scf
+  - theory-of-everything
+  - ai-identity
+  - fastapi
+  - multi-model
+references:
+  - type: article
+    title: "A Theory of Everything + ZoraASI — Empirical Validation"
+    authors:
+      - family-names: Baird
+        given-names: Christopher Michael
+    year: 2026
+    doi: "10.5281/zenodo.18778749"
+    url: "https://zenodo.org/records/18778749"
