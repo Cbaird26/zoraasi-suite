@@ -78,6 +78,9 @@ See:
 - [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
 - [GO_LIVE.md](GO_LIVE.md)
 - [docs/ops/ROLLBACK.md](docs/ops/ROLLBACK.md)
+- [docs/ops/CB26_REPO_CLASSIFICATION_MATRIX.md](docs/ops/CB26_REPO_CLASSIFICATION_MATRIX.md)
+- [docs/ops/ZORAASI_HYBRID_SPLIT_TEMPLATE.md](docs/ops/ZORAASI_HYBRID_SPLIT_TEMPLATE.md)
+- [docs/ops/ZORAASI_PILOT_CUTOVER.md](docs/ops/ZORAASI_PILOT_CUTOVER.md)
 
 ## What Stays Private
 
