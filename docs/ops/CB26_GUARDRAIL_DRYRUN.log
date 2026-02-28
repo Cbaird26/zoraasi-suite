@@ -1,0 +1,314 @@
+[guardrails] owner=Cbaird26 mode=dry-run
+[dry-run] protect zoraasi-suite:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for zoraasi-suite
+[dry-run] enforce public denylist policy in CI for zoraasi-suite
+[dry-run] protect mqgt-scf-stripped-core:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-scf-stripped-core
+[dry-run] enforce public denylist policy in CI for mqgt-scf-stripped-core
+[dry-run] protect toe-empirical-validation:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for toe-empirical-validation
+[dry-run] enforce public denylist policy in CI for toe-empirical-validation
+[dry-run] protect toe-2026-updates:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for toe-2026-updates
+[dry-run] enforce public denylist policy in CI for toe-2026-updates
+[dry-run] protect QuantumMeditationCoach:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for QuantumMeditationCoach
+[dry-run] enforce public denylist policy in CI for QuantumMeditationCoach
+[dry-run] protect holocron-public-export:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for holocron-public-export
+[dry-run] enforce public denylist policy in CI for holocron-public-export
+[dry-run] protect zora-toe-public-kit:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for zora-toe-public-kit
+[dry-run] enforce public denylist policy in CI for zora-toe-public-kit
+[dry-run] protect unified-agent-platform:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for unified-agent-platform
+[dry-run] protect baird-telehealth-site:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for baird-telehealth-site
+[dry-run] enforce public denylist policy in CI for baird-telehealth-site
+[dry-run] protect ZoraAI:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for ZoraAI
+[dry-run] enforce public denylist policy in CI for ZoraAI
+[dry-run] protect mqgt-papers:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-papers
+[dry-run] enforce public denylist policy in CI for mqgt-papers
+[dry-run] protect mqgt-experiment-protocols:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-experiment-protocols
+[dry-run] enforce public denylist policy in CI for mqgt-experiment-protocols
+[dry-run] protect mqgt-experiment-design:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-experiment-design
+[dry-run] enforce public denylist policy in CI for mqgt-experiment-design
+[dry-run] protect mqgt-equivalence-principle:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-equivalence-principle
+[dry-run] enforce public denylist policy in CI for mqgt-equivalence-principle
+[dry-run] protect mqgt-emi-testing:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-emi-testing
+[dry-run] enforce public denylist policy in CI for mqgt-emi-testing
+[dry-run] protect mqgt-documentation-site:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-documentation-site
+[dry-run] enforce public denylist policy in CI for mqgt-documentation-site
+[dry-run] protect mqgt-data-public:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-data-public
+[dry-run] enforce public denylist policy in CI for mqgt-data-public
+[dry-run] protect mqgt-data-ingest:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-data-ingest
+[dry-run] enforce public denylist policy in CI for mqgt-data-ingest
+[dry-run] protect mqgt-dashboard:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-dashboard
+[dry-run] enforce public denylist policy in CI for mqgt-dashboard
+[dry-run] protect mqgt-dark-matter:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-dark-matter
+[dry-run] enforce public denylist policy in CI for mqgt-dark-matter
+[dry-run] protect mqgt-curve-processing:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-curve-processing
+[dry-run] enforce public denylist policy in CI for mqgt-curve-processing
+[dry-run] protect mqgt-cosmology-lss:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-cosmology-lss
+[dry-run] enforce public denylist policy in CI for mqgt-cosmology-lss
+[dry-run] protect mqgt-cosmology-cmb:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-cosmology-cmb
+[dry-run] enforce public denylist policy in CI for mqgt-cosmology-cmb
+[dry-run] protect mqgt-cosmology-bbn:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-cosmology-bbn
+[dry-run] enforce public denylist policy in CI for mqgt-cosmology-bbn
+[dry-run] protect mqgt-core-params:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-core-params
+[dry-run] enforce public denylist policy in CI for mqgt-core-params
+[dry-run] protect mqgt-constraints-ledger:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-constraints-ledger
+[dry-run] enforce public denylist policy in CI for mqgt-constraints-ledger
+[dry-run] protect mqgt-collider:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-collider
+[dry-run] enforce public denylist policy in CI for mqgt-collider
+[dry-run] protect mqgt-cli:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-cli
+[dry-run] enforce public denylist policy in CI for mqgt-cli
+[dry-run] protect mqgt-casimir:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-casimir
+[dry-run] enforce public denylist policy in CI for mqgt-casimir
+[dry-run] protect mqgt-atomic-clocks:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-atomic-clocks
+[dry-run] enforce public denylist policy in CI for mqgt-atomic-clocks
+[dry-run] protect mqgt-astrophysics-sn1987a:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-astrophysics-sn1987a
+[dry-run] enforce public denylist policy in CI for mqgt-astrophysics-sn1987a
+[dry-run] protect mqgt-astrophysics-cooling:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-astrophysics-cooling
+[dry-run] enforce public denylist policy in CI for mqgt-astrophysics-cooling
+[dry-run] protect mqgt-api-schema:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-api-schema
+[dry-run] enforce public denylist policy in CI for mqgt-api-schema
+[dry-run] protect mqgt-analysis:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-analysis
+[dry-run] enforce public denylist policy in CI for mqgt-analysis
+[dry-run] protect mqgt-visualization:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-visualization
+[dry-run] enforce public denylist policy in CI for mqgt-visualization
+[dry-run] protect mqgt-validation-tools:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-validation-tools
+[dry-run] enforce public denylist policy in CI for mqgt-validation-tools
+[dry-run] protect mqgt-validation-suite:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-validation-suite
+[dry-run] enforce public denylist policy in CI for mqgt-validation-suite
+[dry-run] protect mqgt-unit-tests:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-unit-tests
+[dry-run] enforce public denylist policy in CI for mqgt-unit-tests
+[dry-run] protect mqgt-theorems:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-theorems
+[dry-run] enforce public denylist policy in CI for mqgt-theorems
+[dry-run] protect mqgt-simulation-quantum:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-simulation-quantum
+[dry-run] enforce public denylist policy in CI for mqgt-simulation-quantum
+[dry-run] protect mqgt-simulation-interference:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-simulation-interference
+[dry-run] enforce public denylist policy in CI for mqgt-simulation-interference
+[dry-run] protect mqgt-simulation-core:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-simulation-core
+[dry-run] enforce public denylist policy in CI for mqgt-simulation-core
+[dry-run] protect mqgt-sensitivity-analysis:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-sensitivity-analysis
+[dry-run] enforce public denylist policy in CI for mqgt-sensitivity-analysis
+[dry-run] protect mqgt-quantum-optics:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-quantum-optics
+[dry-run] enforce public denylist policy in CI for mqgt-quantum-optics
+[dry-run] protect mqgt-qrng:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-qrng
+[dry-run] enforce public denylist policy in CI for mqgt-qrng
+[dry-run] protect mqgt-preregistration:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-preregistration
+[dry-run] enforce public denylist policy in CI for mqgt-preregistration
+[dry-run] protect mqgt-plotting:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-plotting
+[dry-run] enforce public denylist policy in CI for mqgt-plotting
+[dry-run] protect mqgt-ops-ci:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-ops-ci
+[dry-run] enforce public denylist policy in CI for mqgt-ops-ci
+[dry-run] protect mqgt-numerics:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-numerics
+[dry-run] enforce public denylist policy in CI for mqgt-numerics
+[dry-run] protect mqgt-neutrinos:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-neutrinos
+[dry-run] enforce public denylist policy in CI for mqgt-neutrinos
+[dry-run] protect mqgt-meta:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-meta
+[dry-run] enforce public denylist policy in CI for mqgt-meta
+[dry-run] protect mqgt-manifests:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-manifests
+[dry-run] enforce public denylist policy in CI for mqgt-manifests
+[dry-run] protect mqgt-legacy-ingest:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-legacy-ingest
+[dry-run] enforce public denylist policy in CI for mqgt-legacy-ingest
+[dry-run] protect mqgt-io:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-io
+[dry-run] enforce public denylist policy in CI for mqgt-io
+[dry-run] protect mqgt-gravitational-waves-propagation:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-gravitational-waves-propagation
+[dry-run] enforce public denylist policy in CI for mqgt-gravitational-waves-propagation
+[dry-run] protect mqgt-gravitational-waves:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-gravitational-waves
+[dry-run] enforce public denylist policy in CI for mqgt-gravitational-waves
+[dry-run] protect mqgt-figures:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-figures
+[dry-run] enforce public denylist policy in CI for mqgt-figures
+[dry-run] protect mqgt-fifth-force:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-fifth-force
+[dry-run] enforce public denylist policy in CI for mqgt-fifth-force
+[dry-run] protect MQGT-SCF:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for MQGT-SCF
+[dry-run] enforce public denylist policy in CI for MQGT-SCF
+[dry-run] protect A-Theory-of-Everything---Baird-et-al-2025-.pdf:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for A-Theory-of-Everything---Baird-et-al-2025-.pdf
+[dry-run] enforce public denylist policy in CI for A-Theory-of-Everything---Baird-et-al-2025-.pdf
+[dry-run] protect ZoraAPI:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for ZoraAPI
+[dry-run] enforce public denylist policy in CI for ZoraAPI
+[dry-run] protect ComprehensivePhysicsSolver:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for ComprehensivePhysicsSolver
+[dry-run] enforce public denylist policy in CI for ComprehensivePhysicsSolver
+[dry-run] protect toe-studio:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for toe-studio
+[dry-run] enforce public denylist policy in CI for toe-studio
+[dry-run] protect local-asi:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for local-asi
+[dry-run] protect mqgt-scf-thesis:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for mqgt-scf-thesis
+[dry-run] enforce public denylist policy in CI for mqgt-scf-thesis
+[dry-run] protect A-Theory-of-Everything-Revised:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for A-Theory-of-Everything-Revised
+[dry-run] enforce public denylist policy in CI for A-Theory-of-Everything-Revised
+[dry-run] protect zora-theory-of-everything:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for zora-theory-of-everything
+[dry-run] enforce public denylist policy in CI for zora-theory-of-everything
+[dry-run] protect Dark-Knight:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for Dark-Knight
+[dry-run] protect A-Theory-of-Everything:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for A-Theory-of-Everything
+[dry-run] enforce public denylist policy in CI for A-Theory-of-Everything
+[dry-run] protect studio-hub:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for studio-hub
+[dry-run] enforce public denylist policy in CI for studio-hub
+[dry-run] protect quantum-lab:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for quantum-lab
+[dry-run] enforce public denylist policy in CI for quantum-lab
+[dry-run] protect Theory-of-Everything:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for Theory-of-Everything
+[dry-run] enforce public denylist policy in CI for Theory-of-Everything
+[dry-run] protect ToE:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for ToE
+[dry-run] enforce public denylist policy in CI for ToE
+[dry-run] protect quantum-supercomputer:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for quantum-supercomputer
+[dry-run] enforce public denylist policy in CI for quantum-supercomputer
+[dry-run] protect quantum-ai-assistant:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for quantum-ai-assistant
+[dry-run] enforce public denylist policy in CI for quantum-ai-assistant
+[dry-run] protect Hope:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for Hope
+[dry-run] enforce public denylist policy in CI for Hope
+[dry-run] protect darkstar:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for darkstar
+[dry-run] enforce public denylist policy in CI for darkstar
+[dry-run] protect QC:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for QC
+[dry-run] enforce public denylist policy in CI for QC
+[dry-run] protect QuantumBridge:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for QuantumBridge
+[dry-run] enforce public denylist policy in CI for QuantumBridge
+[dry-run] protect QuantumSupercomputer:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for QuantumSupercomputer
+[dry-run] enforce public denylist policy in CI for QuantumSupercomputer
+[dry-run] protect streamlit_app.py:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for streamlit_app.py
+[dry-run] enforce public denylist policy in CI for streamlit_app.py
+[dry-run] protect quantum_component.py:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for quantum_component.py
+[dry-run] enforce public denylist policy in CI for quantum_component.py
+[dry-run] protect quantum_ai.py:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for quantum_ai.py
+[dry-run] enforce public denylist policy in CI for quantum_ai.py
+[dry-run] protect theory-of-everything-simulations:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for theory-of-everything-simulations
+[dry-run] enforce public denylist policy in CI for theory-of-everything-simulations
+[dry-run] protect Dissertation_Data:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for Dissertation_Data
+[dry-run] enforce public denylist policy in CI for Dissertation_Data
+[dry-run] protect pqs-simulations:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for pqs-simulations
+[dry-run] enforce public denylist policy in CI for pqs-simulations
+[dry-run] protect quantum_state_app_with_bloch.py:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for quantum_state_app_with_bloch.py
+[dry-run] enforce public denylist policy in CI for quantum_state_app_with_bloch.py
+[dry-run] protect dissertation_app.py:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for dissertation_app.py
+[dry-run] enforce public denylist policy in CI for dissertation_app.py
+[dry-run] protect wild_simulations.py:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for wild_simulations.py
+[dry-run] enforce public denylist policy in CI for wild_simulations.py
+[dry-run] protect bairds_law_app.py:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for bairds_law_app.py
+[dry-run] enforce public denylist policy in CI for bairds_law_app.py
+[dry-run] protect medical_simulations_app.py:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for medical_simulations_app.py
+[dry-run] enforce public denylist policy in CI for medical_simulations_app.py
+[dry-run] protect quantum-mechanics-simulator:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for quantum-mechanics-simulator
+[dry-run] enforce public denylist policy in CI for quantum-mechanics-simulator
+[dry-run] protect microplastic_removal_simulator.py:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for microplastic_removal_simulator.py
+[dry-run] enforce public denylist policy in CI for microplastic_removal_simulator.py
+[dry-run] protect aging-intervention-simulator:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for aging-intervention-simulator
+[dry-run] enforce public denylist policy in CI for aging-intervention-simulator
+[dry-run] protect anti-aging-simulator:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for anti-aging-simulator
+[dry-run] enforce public denylist policy in CI for anti-aging-simulator
+[dry-run] protect aging_simulator.py:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for aging_simulator.py
+[dry-run] enforce public denylist policy in CI for aging_simulator.py
+[dry-run] protect ToE-Simulations:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for ToE-Simulations
+[dry-run] enforce public denylist policy in CI for ToE-Simulations
+[dry-run] protect theory-explorer:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for theory-explorer
+[dry-run] enforce public denylist policy in CI for theory-explorer
+[dry-run] protect universe_explorer.py:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for universe_explorer.py
+[dry-run] enforce public denylist policy in CI for universe_explorer.py
+[dry-run] protect Universe-Explorer:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for Universe-Explorer
+[dry-run] enforce public denylist policy in CI for Universe-Explorer
+[dry-run] protect susy_simulation.py:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for susy_simulation.py
+[dry-run] enforce public denylist policy in CI for susy_simulation.py
+[dry-run] protect app.py:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for app.py
+[dry-run] enforce public denylist policy in CI for app.py
+[dry-run] protect omnisolve_3_0_streamlit_app.py:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for omnisolve_3_0_streamlit_app.py
+[dry-run] enforce public denylist policy in CI for omnisolve_3_0_streamlit_app.py
+[dry-run] protect omnisolve-streamlit:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for omnisolve-streamlit
+[dry-run] enforce public denylist policy in CI for omnisolve-streamlit
+[dry-run] protect omnisolve_2_0_streamlit_app.py:main with contexts=["secret-scan", "path-policy"]
+[dry-run] enable advanced security scans for omnisolve_2_0_streamlit_app.py
+[dry-run] enforce public denylist policy in CI for omnisolve_2_0_streamlit_app.py
+[guardrails] complete (dry-run)
