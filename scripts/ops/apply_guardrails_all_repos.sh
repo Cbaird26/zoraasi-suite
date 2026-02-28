@@ -28,16 +28,31 @@ apply_branch_protection() {
     return
   fi
 
-  gh api \
+  if gh api \
     -X PUT \
     "repos/${OWNER}/${repo}/branches/${PROTECT_BRANCH}/protection" \
     -H "Accept: application/vnd.github+json" \
-    -f required_status_checks='{"strict":true,"contexts":[],"checks":[{"context":"secret-scan"},{"context":"path-policy"}]}' \
-    -f enforce_admins=true \
-    -f required_pull_request_reviews='{"required_approving_review_count":1}' \
-    -f restrictions=null >/dev/null
-
-  echo "[applied] branch protection ${repo}:${PROTECT_BRANCH}"
+    --input - >/dev/null <<'JSON'
+{
+  "required_status_checks": {
+    "strict": true,
+    "checks": [
+      { "context": "secret-scan" },
+      { "context": "path-policy" }
+    ]
+  },
+  "enforce_admins": true,
+  "required_pull_request_reviews": {
+    "required_approving_review_count": 1
+  },
+  "restrictions": null
+}
+JSON
+  then
+    echo "[applied] branch protection ${repo}:${PROTECT_BRANCH}"
+  else
+    echo "[warn] branch protection failed for ${repo}:${PROTECT_BRANCH}; continuing"
+  fi
 }
 
 apply_security_features() {
@@ -48,13 +63,27 @@ apply_security_features() {
     return
   fi
 
-  gh api \
+  if gh api \
     -X PATCH \
     "repos/${OWNER}/${repo}" \
     -H "Accept: application/vnd.github+json" \
-    -f security_and_analysis='{"secret_scanning":{"status":"enabled"},"secret_scanning_push_protection":{"status":"enabled"}}' >/dev/null
-
-  echo "[applied] security scanning ${repo}"
+    --input - >/dev/null <<'JSON'
+{
+  "security_and_analysis": {
+    "secret_scanning": {
+      "status": "enabled"
+    },
+    "secret_scanning_push_protection": {
+      "status": "enabled"
+    }
+  }
+}
+JSON
+  then
+    echo "[applied] security scanning ${repo}"
+  else
+    echo "[warn] security scanning enable failed for ${repo}; continuing"
+  fi
 }
 
 while read -r repo visibility; do
