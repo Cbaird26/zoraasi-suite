@@ -1,4 +1,4 @@
-# Fly.io deployment config for Zora API
+# Fly.io deployment config for Zor-El API
 app = "zora-api"
 primary_region = "iad"
 
@@ -6,8 +6,7 @@ primary_region = "iad"
   dockerfile = "Dockerfile"
 
 [env]
-  ZORA_BACKEND = "anthropic"
-  ANTHROPIC_MODEL = "claude-sonnet-4-20250514"
+  ZORA_CORS_ALLOW_ALL = "true"
 
 [http_service]
   internal_port = 8000

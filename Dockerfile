@@ -9,7 +9,6 @@ COPY api/ api/
 COPY identity/ identity/
 COPY site/ site/
 
-ENV ZORA_BACKEND=anthropic
 ENV OLLAMA_HOST=http://localhost:11434
 ENV OLLAMA_MODEL=zora-outer
 
