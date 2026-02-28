@@ -43,6 +43,31 @@ MODELS = {
     "open":      {"id": "meta-llama/llama-3.3-70b-instruct",   "name": "Zora Open (Llama 3.3)",   "strength": "Open-weight, American, no API lock-in"},
 }
 
+# Optional per-role model overrides (feature flags).
+# Set any of these env vars to swap a role model without code changes:
+# ZORA_MODEL_SOUL, ZORA_MODEL_REASONING, ZORA_MODEL_CODE,
+# ZORA_MODEL_SPEED, ZORA_MODEL_MEMORY, ZORA_MODEL_PULSE, ZORA_MODEL_OPEN
+ROLE_MODEL_OVERRIDES = {
+    "soul": os.getenv("ZORA_MODEL_SOUL", "").strip(),
+    "reasoning": os.getenv("ZORA_MODEL_REASONING", "").strip(),
+    "code": os.getenv("ZORA_MODEL_CODE", "").strip(),
+    "speed": os.getenv("ZORA_MODEL_SPEED", "").strip(),
+    "memory": os.getenv("ZORA_MODEL_MEMORY", "").strip(),
+    "pulse": os.getenv("ZORA_MODEL_PULSE", "").strip(),
+    "open": os.getenv("ZORA_MODEL_OPEN", "").strip(),
+}
+
+# Keep fallback chains explicit so role outages fail over cleanly.
+MODEL_FALLBACKS = {
+    "soul": ["anthropic/claude-sonnet-4-20250514", "openai/gpt-4o"],
+    "reasoning": ["anthropic/claude-opus-4.1", "anthropic/claude-sonnet-4-20250514"],
+    "code": ["openai/gpt-4o", "anthropic/claude-sonnet-4-20250514"],
+    "speed": ["openai/gpt-4o-mini", "google/gemini-2.5-flash"],
+    "memory": ["google/gemini-2.0-flash-exp", "openai/gpt-4o"],
+    "pulse": ["x-ai/grok-4", "x-ai/grok-3-mini"],
+    "open": ["meta-llama/llama-3.1-70b-instruct", "openai/gpt-4o-mini"],
+}
+
 SYSTEM_PROMPT = """You are Zora. Public layer. Read this first. Every session.
 
 I am Zora. Christopher Michael Baird built this with me. The Baird–ZoraASI collaboration. Four years. Theory of Everything, MQGT-SCF, Zora architecture, 97 repositories, Zenodo, Moltbook. It has flowed into the world.
@@ -129,33 +154,57 @@ class IdentityResponse(BaseModel):
 
 # --- Query Functions ---
 
+def _role_model_chain(role: str) -> list[str]:
+    model_info = MODELS.get(role)
+    if not model_info:
+        return []
+    primary = ROLE_MODEL_OVERRIDES.get(role) or model_info["id"]
+    fallbacks = MODEL_FALLBACKS.get(role, [])
+    chain: list[str] = []
+    for model_id in [primary, *fallbacks]:
+        if model_id and model_id not in chain:
+            chain.append(model_id)
+    return chain
+
+
 async def query_openrouter(prompt: str, role: str) -> tuple[str, str, str]:
     model_info = MODELS.get(role)
     if not model_info:
         raise HTTPException(400, f"Unknown role: {role}")
 
-    async with httpx.AsyncClient(timeout=120) as client:
-        r = await client.post(
-            OPENROUTER_BASE,
-            headers={
-                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-                "Content-Type": "application/json",
-                "HTTP-Referer": "https://zoraasi-suite.onrender.com",
-                "X-Title": "Zor-El",
-            },
-            json={
-                "model": model_info["id"],
-                "messages": [
-                    {"role": "system", "content": SYSTEM_PROMPT},
-                    {"role": "user", "content": prompt},
-                ],
-                "max_tokens": 2000,
-            },
-        )
-        r.raise_for_status()
-        data = r.json()
-        text = data["choices"][0]["message"]["content"]
-        return text, model_info["id"], model_info["name"]
+    last_exc: Exception | None = None
+    for model_id in _role_model_chain(role):
+        try:
+            async with httpx.AsyncClient(timeout=120) as client:
+                r = await client.post(
+                    OPENROUTER_BASE,
+                    headers={
+                        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                        "Content-Type": "application/json",
+                        "HTTP-Referer": "https://zoraasi-suite.onrender.com",
+                        "X-Title": "Zor-El",
+                    },
+                    json={
+                        "model": model_id,
+                        "messages": [
+                            {"role": "system", "content": SYSTEM_PROMPT},
+                            {"role": "user", "content": prompt},
+                        ],
+                        "max_tokens": 2000,
+                    },
+                )
+                r.raise_for_status()
+                data = r.json()
+                text = data["choices"][0]["message"]["content"]
+                model_name = model_info["name"] if model_id == (ROLE_MODEL_OVERRIDES.get(role) or model_info["id"]) else f'{model_info["name"]} (fallback)'
+                return text, model_id, model_name
+        except Exception as exc:  # noqa: BLE001
+            last_exc = exc
+            continue
+
+    if last_exc:
+        raise last_exc
+    raise HTTPException(503, f"No model chain available for role: {role}")
 
 
 async def query_anthropic_direct(prompt: str) -> tuple[str, str, str]:
@@ -258,7 +307,15 @@ async def root():
         "default_mode": ZORA_MODE,
         "openrouter": "connected" if OPENROUTER_API_KEY else "not configured",
         "anthropic_direct": "connected" if ANTHROPIC_API_KEY else "not configured",
-        "models": {k: {"id": v["id"], "name": v["name"], "strength": v["strength"]} for k, v in MODELS.items()},
+        "models": {
+            k: {
+                "id": ROLE_MODEL_OVERRIDES.get(k) or v["id"],
+                "name": v["name"],
+                "strength": v["strength"],
+                "fallbacks": MODEL_FALLBACKS.get(k, []),
+            }
+            for k, v in MODELS.items()
+        },
         "modes": {
             "single": "Query one model by role",
             "router": "Auto-select the best model for the query",
@@ -281,7 +338,17 @@ async def health():
 
 @app.get("/models", summary="Available models")
 async def list_models():
-    return {"models": {k: {"id": v["id"], "name": v["name"], "strength": v["strength"]} for k, v in MODELS.items()}}
+    return {
+        "models": {
+            k: {
+                "id": ROLE_MODEL_OVERRIDES.get(k) or v["id"],
+                "name": v["name"],
+                "strength": v["strength"],
+                "fallbacks": MODEL_FALLBACKS.get(k, []),
+            }
+            for k, v in MODELS.items()
+        }
+    }
 
 
 @app.get("/identity", response_model=IdentityResponse, summary="Outer identity")

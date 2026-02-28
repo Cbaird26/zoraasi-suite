@@ -4,6 +4,7 @@ zora-archive/
 *.credentials.json
 .env
 .venv/
+snapshots/
 __pycache__/
 *.pyc
 .DS_Store

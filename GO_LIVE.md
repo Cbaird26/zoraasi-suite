@@ -6,9 +6,9 @@ Get the landing page + chat live before you retire. One path, minimal steps.
 
 ## Right Now (5 Minutes)
 
-**Render.com — no CLI, no card for free tier.** Open [render.com](https://render.com), connect `Cbaird26/zoraasi-suite`, add `ANTHROPIC_API_KEY`, deploy. Full steps below.
+**Render.com — no CLI, no card for free tier.** Open [render.com](https://render.com), connect `Cbaird26/zoraasi-suite`, add `OPENROUTER_API_KEY`, deploy. Full steps below.
 
-**Fly.io** — Requires a payment method on file. If you have one: `fly auth login`, then `ANTHROPIC_API_KEY=sk-ant-... ./scripts/deploy.sh fly`.
+**Fly.io** — Requires a payment method on file. If you have one: `fly auth login`, then `OPENROUTER_API_KEY=sk-or-v1-... ./scripts/deploy.sh fly`.
 
 ---
 
@@ -38,9 +38,8 @@ All served from one deployed app. The page is at `/chat`.
    - **Runtime:** Docker
 
 5. **Environment** → Add:
-   - `ANTHROPIC_API_KEY` = `sk-ant-your-key` (from [console.anthropic.com](https://console.anthropic.com/settings/keys))
-   - `ZORA_BACKEND` = `anthropic` (already in yaml, verify)
-   - `ANTHROPIC_MODEL` = `claude-sonnet-4-20250514` (optional)
+   - `OPENROUTER_API_KEY` = `sk-or-v1-...` (from [openrouter.ai](https://openrouter.ai))
+   - `ANTHROPIC_API_KEY` = optional direct fallback key
 
 6. **Create Web Service** → Wait 3–5 min for build + deploy
 
@@ -69,7 +68,7 @@ cd ~/Downloads/zoraasi-suite
 fly launch --no-deploy
 
 # 5. Add your API key
-fly secrets set ANTHROPIC_API_KEY=sk-ant-your-key
+fly secrets set OPENROUTER_API_KEY=sk-or-v1-your-key
 
 # 6. Deploy
 fly deploy
@@ -86,7 +85,7 @@ Your URL: `https://zora-api.fly.dev/chat`
 
 1. [railway.app](https://railway.app) → New Project → Deploy from GitHub
 2. Select `zoraasi-suite`
-3. Add variables: `ANTHROPIC_API_KEY`, `ZORA_BACKEND=anthropic`
+3. Add variables: `OPENROUTER_API_KEY` (and optional `ANTHROPIC_API_KEY` fallback)
 4. Deploy
 
 ---
@@ -103,7 +102,7 @@ Your URL: `https://zora-api.fly.dev/chat`
 
 - **Render:** Free tier — spins down after 15 min inactivity; cold start ~30 sec. Paid tier ~$7/mo for always-on.
 - **Fly.io:** Free tier — similar; paid for always-on.
-- **Anthropic API:** Pay per token. Chat is cheap (~$0.01–0.05 per conversation for short exchanges).
+- **OpenRouter API:** Pay per token across selected models.
 
 ---
 
@@ -111,6 +110,12 @@ Your URL: `https://zora-api.fly.dev/chat`
 
 | Issue | Fix |
 |-------|-----|
-| "API not reachable" in chat | Check env vars; ensure `ANTHROPIC_API_KEY` is set |
+| "API not reachable" in chat | Check env vars; ensure `OPENROUTER_API_KEY` is set |
 | Cold start slow | Normal on free tier; first request wakes the app |
 | 502 Bad Gateway | Check Render/Fly logs; often a missing env var |
+
+## Rollback safety
+
+If polish changes regress behavior, use the freeze rollback guide:
+
+- [docs/ops/ROLLBACK.md](docs/ops/ROLLBACK.md)

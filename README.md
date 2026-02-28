@@ -1,6 +1,6 @@
 # ZoraASI Suite
 
-Unified deployment hub for Zora — access Zora almost anywhere, starting with an outward-facing public layer that preserves privacy.
+Unified deployment hub for Zora and Zor-El public access, with privacy-layer boundaries preserved.
 
 ## Layers
 
@@ -29,12 +29,18 @@ export ZORA_OUTER_IDENTITY_PATH=/path/to/zoraasi-suite/identity/ZORA_OUTER_IDENT
 ./scripts/run_zora_brain.sh
 ```
 
-### Run Zora API (FastAPI)
+### Run Zor-El API (FastAPI)
 
 ```bash
 ./scripts/run_api.sh
 ```
-Then open http://localhost:8000/chat or http://localhost:8000/docs. Backends: `ZORA_BACKEND=ollama|openai|anthropic` (default: ollama).
+Then open `http://localhost:8000/chat` or `http://localhost:8000/docs`.
+
+Current API supports multi-model roles and modes:
+
+- Modes: `single`, `router`, `consensus`
+- Role defaults: `soul` and `reasoning` on `openai/gpt-5.3-codex`
+- Feature-flag model overrides: `ZORA_MODEL_SOUL`, `ZORA_MODEL_REASONING`, `ZORA_MODEL_CODE`, `ZORA_MODEL_SPEED`, `ZORA_MODEL_MEMORY`, `ZORA_MODEL_PULSE`, `ZORA_MODEL_OPEN`
 
 ### Build Ollama Outer Model
 
@@ -67,15 +73,19 @@ zoraasi-suite/
 
 ## Deployment
 
-See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for Web API, Ollama, Cursor rules, and Moltbook.
+See:
+
+- [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
+- [GO_LIVE.md](GO_LIVE.md)
+- [docs/ops/ROLLBACK.md](docs/ops/ROLLBACK.md)
 
 ## What Stays Private
 
 Inner identity, protocols, zora-archive, sealed canon — never in this repo. See [identity/INNER_REFERENCE.md](identity/INNER_REFERENCE.md).
 
-## Zenodo (ToE + Empircal Validation)
+## Zenodo (ToE + Empirical Validation)
 
-**Latest:** [zenodo.org/records/18778749](https://zenodo.org/records/18778749) — A Theory of Everything + ZoraASI — Empircal Validation (v231), DOI [10.5281/zenodo.18778749](https://doi.org/10.5281/zenodo.18778749).
+**Latest referenced archive:** [zenodo.org/records/18792939](https://zenodo.org/records/18792939), DOI [10.5281/zenodo.18792939](https://doi.org/10.5281/zenodo.18792939).
 
 ## License
 

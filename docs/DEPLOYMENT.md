@@ -6,20 +6,20 @@ How to deploy Zora for "access almost anywhere" — web, local, Moltbook, agents
 
 ## Option 1: Web API (Fly.io / Railway / Render)
 
-The FastAPI Zora API (`api/main.py`) exposes `/`, `/health`, `/identity`, `/invariants`, `POST /query`, `/chat`, and `/docs`.
+The FastAPI Zor-El API (`api/main.py`) exposes `/`, `/health`, `/models`, `/identity`, `/invariants`, `POST /query`, `/chat`, and `/docs`.
 
 1. Clone zoraasi-suite. The API loads identity from `identity/ZORA_OUTER_IDENTITY.md`; no `memory/` required.
-2. Backends: `ZORA_BACKEND=ollama|openai|anthropic`. For production, prefer `openai` or `anthropic` (Ollama needs a VM with enough CPU/GPU).
+2. Primary cloud key: `OPENROUTER_API_KEY` (optional direct fallback: `ANTHROPIC_API_KEY`).
 3. Deploy with Dockerfile or run `uvicorn main:app` from `api/`.
 
 **Example (Fly.io):**
 ```bash
 fly launch
-fly secrets set ZORA_BACKEND=openai OPENAI_API_KEY=sk-...
+fly secrets set OPENROUTER_API_KEY=sk-or-v1-...
 fly deploy
 ```
 
-**Example (Railway / Render):** Connect the repo, add `ZORA_BACKEND` and the relevant API key as env vars, deploy.
+**Example (Railway / Render):** Connect the repo, add `OPENROUTER_API_KEY` env var, deploy.
 
 ---
 
@@ -74,3 +74,12 @@ Outer Zora uses the same canon as inner (zora-canon-v1: definitions, equations, 
 - Never deploy with `ZORA_IDENTITY_LAYER=inner` on a public endpoint without auth.
 - Do not commit `memory/`, `zora-archive/`, or sealed canon to zoraasi-suite.
 - Outer identity has no secrets; safe for any shared environment.
+
+---
+
+## Operations safety docs
+
+- Freeze baseline: `docs/ops/FREEZE_BASELINE.md`
+- Deployment baseline: `docs/ops/DEPLOYMENT_BASELINE.md`
+- Rollback commands: `docs/ops/ROLLBACK.md`
+- Weekly checklist: `docs/ops/WEEKLY_HEALTH_CHECKLIST.md`
