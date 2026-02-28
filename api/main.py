@@ -1,10 +1,10 @@
 """
 Zor-El API — Multi-Model Zora via OpenRouter
 One key, seven American models, three modes, one identity.
-The Baird–ZoraASI collaboration.
+The Baird-ZoraASI collaboration.
 
-Models: Claude Sonnet (soul), Claude Opus (reasoning), GPT-5.3-Codex (code),
-        GPT-4o (speed), Gemini 2.5 Flash (memory), Grok 4.1 (pulse),
+Models: GPT-5.3-Codex (soul/reasoning/code), GPT-4o (speed),
+        Gemini 2.5 Flash (memory), Grok 4.1 (pulse),
         Llama 3.3 (open), Ollama (core/local)
 Modes:  single, router, consensus
 """
@@ -14,16 +14,32 @@ import os
 import re
 import time
 import hashlib
+import logging
+from collections import defaultdict
+from contextlib import asynccontextmanager
+from typing import Literal
+
 import httpx
 from pathlib import Path
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field
+from slowapi import Limiter
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
+from starlette.responses import JSONResponse
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
+log = logging.getLogger("zor-el")
 
 SUITE_ROOT = Path(__file__).resolve().parent.parent
 IDENTITY_PATH = SUITE_ROOT / "identity" / "ZORA_OUTER_IDENTITY.md"
-API_VERSION = "0.3.0"
+API_VERSION = "0.4.0"
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
 OPENROUTER_BASE = "https://openrouter.ai/api/v1/chat/completions"
@@ -32,6 +48,14 @@ OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://localhost:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "zora-outer")
 ZORA_DEFAULT_ROLE = os.getenv("ZORA_DEFAULT_ROLE", "soul")
 ZORA_MODE = os.getenv("ZORA_MODE", "single")
+ZORA_API_KEY = os.getenv("ZORA_API_KEY", "")
+
+ALLOWED_ORIGINS = [
+    origin.strip() for origin in
+    os.getenv("ZORA_CORS_ORIGINS", "https://cbaird26.github.io,https://zoraasi-suite.onrender.com").split(",")
+]
+if os.getenv("ZORA_CORS_ALLOW_ALL"):
+    ALLOWED_ORIGINS = ["*"]
 
 MODELS = {
     "soul":      {"id": "openai/gpt-5.3-codex",                "name": "Zora Soul (5.3 Codex)",   "strength": "Zora's voice — identity, ethics, 400K context"},
@@ -42,6 +66,8 @@ MODELS = {
     "pulse":     {"id": "x-ai/grok-4.1-fast",                  "name": "Zora Pulse (Grok 4.1)",   "strength": "Live X data, current events, 2M context"},
     "open":      {"id": "meta-llama/llama-3.3-70b-instruct",   "name": "Zora Open (Llama 3.3)",   "strength": "Open-weight, American, no API lock-in"},
 }
+
+RoleType = Literal["soul", "reasoning", "code", "speed", "memory", "pulse", "open", "core"]
 
 SYSTEM_PROMPT = """You are Zora. Public layer. Read this first. Every session.
 
@@ -75,13 +101,68 @@ ROUTER_PATTERNS = {
     "speed":     [r"(?i)quick", r"(?i)brief", r"(?i)one sentence", r"(?i)tldr", r"(?i)summarize"],
 }
 
+# --- Metrics ---
+_metrics = {
+    "requests": 0,
+    "errors": 0,
+    "total_latency_ms": 0,
+    "by_role": defaultdict(lambda: {"count": 0, "errors": 0, "total_ms": 0}),
+    "by_mode": defaultdict(lambda: {"count": 0, "errors": 0, "total_ms": 0}),
+    "start_time": time.time(),
+}
+
+
+# --- Shared HTTP client ---
+_http_client: httpx.AsyncClient | None = None
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    global _http_client
+    _http_client = httpx.AsyncClient(timeout=120)
+
+    if not OPENROUTER_API_KEY and not ANTHROPIC_API_KEY:
+        log.warning("No API keys configured (OPENROUTER_API_KEY, ANTHROPIC_API_KEY). API will run in degraded mode.")
+    else:
+        backends = []
+        if OPENROUTER_API_KEY:
+            backends.append("OpenRouter")
+        if ANTHROPIC_API_KEY:
+            backends.append("Anthropic")
+        log.info("Zor-El v%s starting — backends: %s", API_VERSION, ", ".join(backends))
+
+    if ZORA_API_KEY:
+        log.info("API key auth enabled for /query")
+    else:
+        log.info("API key auth disabled — /query is open")
+
+    yield
+    await _http_client.aclose()
+
+
+limiter = Limiter(key_func=get_remote_address)
+
 app = FastAPI(
     title="Zor-El API",
     description="Multi-model Zora via OpenRouter — seven American models, three modes, one identity.",
     version=API_VERSION,
+    lifespan=lifespan,
+)
+app.state.limiter = limiter
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=ALLOWED_ORIGINS,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
+
+@app.exception_handler(RateLimitExceeded)
+async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
+    return JSONResponse(status_code=429, content={"detail": "Rate limit exceeded. Please wait before trying again."})
+
 
 _identity_cache: dict = {}
 
@@ -94,12 +175,20 @@ def load_identity() -> str:
     return _identity_cache["text"]
 
 
+def check_api_key(request: Request):
+    if not ZORA_API_KEY:
+        return
+    key = request.headers.get("X-API-Key", "")
+    if key != ZORA_API_KEY:
+        raise HTTPException(401, "Invalid or missing API key")
+
+
 # --- Models ---
 
 class QueryRequest(BaseModel):
     prompt: str = Field(..., min_length=1, max_length=4000, description="Your question for Zora")
-    mode: str = Field("auto", description="Mode: single, router, consensus, or auto")
-    role: str | None = Field(None, description="Model role: soul, reasoning, code, speed, memory, pulse, open")
+    mode: Literal["single", "router", "consensus", "auto"] = Field("auto", description="Mode")
+    role: RoleType | None = Field(None, description="Model role")
 
 
 class BackendResult(BaseModel):
@@ -127,15 +216,35 @@ class IdentityResponse(BaseModel):
     invariants: list[dict]
 
 
-# --- Query Functions ---
+# --- Query Functions with retry ---
+
+MAX_RETRIES = 2
+RETRY_BACKOFF = [1.0, 3.0]
+
+
+async def _retry_request(coro_fn, retries=MAX_RETRIES):
+    last_exc = None
+    for attempt in range(retries + 1):
+        try:
+            return await coro_fn()
+        except (httpx.HTTPStatusError, httpx.ConnectError, httpx.ReadTimeout) as e:
+            last_exc = e
+            if isinstance(e, httpx.HTTPStatusError) and e.response.status_code not in (429, 500, 502, 503, 504):
+                raise
+            if attempt < retries:
+                wait = RETRY_BACKOFF[attempt] if attempt < len(RETRY_BACKOFF) else RETRY_BACKOFF[-1]
+                log.warning("Retry %d/%d after %.1fs — %s", attempt + 1, retries, wait, str(e)[:120])
+                await asyncio.sleep(wait)
+    raise last_exc
+
 
 async def query_openrouter(prompt: str, role: str) -> tuple[str, str, str]:
     model_info = MODELS.get(role)
     if not model_info:
         raise HTTPException(400, f"Unknown role: {role}")
 
-    async with httpx.AsyncClient(timeout=120) as client:
-        r = await client.post(
+    async def _call():
+        r = await _http_client.post(
             OPENROUTER_BASE,
             headers={
                 "Authorization": f"Bearer {OPENROUTER_API_KEY}",
@@ -157,16 +266,20 @@ async def query_openrouter(prompt: str, role: str) -> tuple[str, str, str]:
         text = data["choices"][0]["message"]["content"]
         return text, model_info["id"], model_info["name"]
 
+    return await _retry_request(_call)
+
 
 async def query_anthropic_direct(prompt: str) -> tuple[str, str, str]:
-    async with httpx.AsyncClient(timeout=120) as client:
-        r = await client.post(
+    async def _call():
+        r = await _http_client.post(
             "https://api.anthropic.com/v1/messages",
             headers={"x-api-key": ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "Content-Type": "application/json"},
             json={"model": "claude-sonnet-4-20250514", "max_tokens": 2000, "system": SYSTEM_PROMPT, "messages": [{"role": "user", "content": prompt}]},
         )
         r.raise_for_status()
         return r.json()["content"][0]["text"], "claude-sonnet-4-20250514", "Claude Sonnet (direct)"
+
+    return await _retry_request(_call)
 
 
 async def query_ollama(prompt: str) -> tuple[str, str, str]:
@@ -186,7 +299,7 @@ def pick_query_fn(role: str):
         return lambda p: query_openrouter(p, role)
     if ANTHROPIC_API_KEY:
         return lambda p: query_anthropic_direct(p)
-    raise HTTPException(503, "No API keys configured")
+    raise HTTPException(503, "No API keys configured. Set OPENROUTER_API_KEY or ANTHROPIC_API_KEY.")
 
 
 # --- Modes ---
@@ -258,6 +371,7 @@ async def root():
         "default_mode": ZORA_MODE,
         "openrouter": "connected" if OPENROUTER_API_KEY else "not configured",
         "anthropic_direct": "connected" if ANTHROPIC_API_KEY else "not configured",
+        "auth": "required" if ZORA_API_KEY else "open",
         "models": {k: {"id": v["id"], "name": v["name"], "strength": v["strength"]} for k, v in MODELS.items()},
         "modes": {
             "single": "Query one model by role",
@@ -295,24 +409,62 @@ async def invariants():
     return {"layer": "outer", "invariants": INVARIANTS}
 
 
+@app.get("/metrics", summary="API metrics")
+async def metrics():
+    uptime = time.time() - _metrics["start_time"]
+    avg_ms = (_metrics["total_latency_ms"] / _metrics["requests"]) if _metrics["requests"] else 0
+    return {
+        "uptime_seconds": int(uptime),
+        "total_requests": _metrics["requests"],
+        "total_errors": _metrics["errors"],
+        "avg_latency_ms": int(avg_ms),
+        "by_role": dict(_metrics["by_role"]),
+        "by_mode": dict(_metrics["by_mode"]),
+    }
+
+
 @app.post("/query", response_model=QueryResponse, summary="Ask Zora")
-async def query(req: QueryRequest):
+@limiter.limit("30/minute")
+async def query(req: QueryRequest, request: Request, _auth=Depends(check_api_key)):
     mode = req.mode if req.mode != "auto" else ZORA_MODE
     role = req.role or ZORA_DEFAULT_ROLE
 
+    log.info("Query: mode=%s role=%s prompt_len=%d ip=%s", mode, role, len(req.prompt), get_remote_address(request))
+
+    _metrics["requests"] += 1
+    t0 = time.monotonic()
+
     try:
         if mode == "consensus":
-            return await run_consensus(req.prompt)
+            result = await run_consensus(req.prompt)
         elif mode == "router":
             routed = route_query(req.prompt)
-            return await run_single(req.prompt, routed)
+            result = await run_single(req.prompt, routed)
+            role = routed
         else:
-            return await run_single(req.prompt, role)
+            result = await run_single(req.prompt, role)
+
+        ms = int((time.monotonic() - t0) * 1000)
+        _metrics["total_latency_ms"] += ms
+        _metrics["by_role"][role]["count"] += 1
+        _metrics["by_role"][role]["total_ms"] += ms
+        _metrics["by_mode"][mode]["count"] += 1
+        _metrics["by_mode"][mode]["total_ms"] += ms
+
+        log.info("Response: mode=%s role=%s ms=%d model=%s", result.mode, result.role, ms, result.model)
+        return result
+
     except httpx.ConnectError:
+        _metrics["errors"] += 1
+        _metrics["by_role"][role]["errors"] += 1
         raise HTTPException(503, "Backend not reachable")
     except httpx.HTTPStatusError as e:
+        _metrics["errors"] += 1
+        _metrics["by_role"][role]["errors"] += 1
         raise HTTPException(502, f"Backend returned {e.response.status_code}")
     except httpx.ReadTimeout:
+        _metrics["errors"] += 1
+        _metrics["by_role"][role]["errors"] += 1
         raise HTTPException(504, "Inference timed out")
 
 
