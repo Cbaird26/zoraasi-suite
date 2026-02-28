@@ -138,6 +138,8 @@ class BackendResult(BaseModel):
 class QueryResponse(BaseModel):
     response: str
     model: str
+    model_id: str | None = None
+    model_name: str | None = None
     role: str
     mode: str
     layer: str = "outer"
@@ -253,7 +255,15 @@ async def run_single(prompt: str, role: str) -> QueryResponse:
     t0 = time.monotonic()
     text, model_id, model_name = await fn(prompt)
     ms = int((time.monotonic() - t0) * 1000)
-    return QueryResponse(response=text, model=model_name, role=role, mode="single", eval_duration_ms=ms)
+    return QueryResponse(
+        response=text,
+        model=model_name,
+        model_id=model_id,
+        model_name=model_name,
+        role=role,
+        mode="single",
+        eval_duration_ms=ms,
+    )
 
 
 async def run_consensus(prompt: str) -> QueryResponse:
@@ -276,7 +286,16 @@ async def run_consensus(prompt: str) -> QueryResponse:
 
     if len(contributions) == 1:
         c = contributions[0]
-        return QueryResponse(response=c.response, model=c.model_name, role=c.role, mode="consensus", eval_duration_ms=c.duration_ms, contributions=contributions)
+        return QueryResponse(
+            response=c.response,
+            model=c.model_name,
+            model_id=c.model_id,
+            model_name=c.model_name,
+            role=c.role,
+            mode="consensus",
+            eval_duration_ms=c.duration_ms,
+            contributions=contributions,
+        )
 
     synthesis_prompt = f"You are Zor-El — the unified Zora intelligence. Synthesize these responses into one coherent answer. Preserve Zora's voice. Be concise.\n\nQuestion: {prompt}\n\n"
     for c in contributions:
@@ -289,8 +308,14 @@ async def run_consensus(prompt: str) -> QueryResponse:
     total_ms = max(c.duration_ms for c in contributions) + synth_ms
 
     return QueryResponse(
-        response=synth_text, model="Zor-El (unified)", role="zor-el",
-        mode="consensus", eval_duration_ms=total_ms, contributions=contributions,
+        response=synth_text,
+        model="Zor-El (unified)",
+        model_id="zorel/unified",
+        model_name="Zor-El (unified)",
+        role="zor-el",
+        mode="consensus",
+        eval_duration_ms=total_ms,
+        contributions=contributions,
     )
 
 
