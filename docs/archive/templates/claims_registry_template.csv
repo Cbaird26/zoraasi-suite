@@ -1,0 +1,2 @@
+claim_id,paper_id,claim_text,status,source_record_id,source_locator,notes
+claim_001,paper_001,Example claim text,specified,source_record_here,page_001-002,Allowed statuses: proved; specified; conjectural; experimental; editorial.

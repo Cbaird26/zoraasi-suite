@@ -1,0 +1,2469 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-03-09T20:20:23Z",
+  "description": "Collection-level preservation-first corpus scaffold. Replace or extend repo-level records with document-level entries as sources are ingested.",
+  "records": [
+    {
+      "id": "mqgt-astrophysics-sn1987a",
+      "title": "mqgt-astrophysics-sn1987a",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-astrophysics-sn1987a",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "1987 (inferred from title)",
+      "date_sort": "1987-01-01",
+      "date_certainty": "inferred_from_title",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "a-theory-of-everything-baird-et-al-2025-pdf",
+      "title": "A-Theory-of-Everything---Baird-et-al-2025-.pdf",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_science",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/A-Theory-of-Everything---Baird-et-al-2025-.pdf",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "2025 (inferred from title)",
+      "date_sort": "2025-01-01",
+      "date_certainty": "inferred_from_title",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "toe-2026-updates",
+      "title": "toe-2026-updates",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_science",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/toe-2026-updates",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "2026 (inferred from title)",
+      "date_sort": "2026-01-01",
+      "date_certainty": "inferred_from_title",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "a-theory-of-everything",
+      "title": "A-Theory-of-Everything",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_science",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/A-Theory-of-Everything",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "a-theory-of-everything-revised",
+      "title": "A-Theory-of-Everything-Revised",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_science",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/A-Theory-of-Everything-Revised",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "aging-intervention-simulator",
+      "title": "aging-intervention-simulator",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/aging-intervention-simulator",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "aging-simulator-py",
+      "title": "aging_simulator.py",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/aging_simulator.py",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "anti-aging-simulator",
+      "title": "anti-aging-simulator",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/anti-aging-simulator",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "app-py",
+      "title": "app.py",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/app.py",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "baird-telehealth-site",
+      "title": "baird-telehealth-site",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_interface",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/baird-telehealth-site",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "bairds-law-app-py",
+      "title": "bairds_law_app.py",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/bairds_law_app.py",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "canon-sources",
+      "title": "canon/sources/",
+      "record_type": "private_pointer",
+      "corpus_layer": "private_sealed",
+      "visibility": "private",
+      "source_kind": "private_path_pointer",
+      "canonical_location": "canon/sources/",
+      "tracker_status": "reference_only",
+      "ingest_status": "private_workspace_only",
+      "execution_boundary": "private_workspace_only",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Hermetic/initiatic materials (sealed)",
+      "provenance": {
+        "source_file": "identity/INNER_REFERENCE.md",
+        "source_type": "private_pointer_list"
+      }
+    },
+    {
+      "id": "comprehensivephysicssolver",
+      "title": "ComprehensivePhysicsSolver",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/ComprehensivePhysicsSolver",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "darkstar",
+      "title": "darkstar",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/darkstar",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "dissertation-app-py",
+      "title": "dissertation_app.py",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/dissertation_app.py",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "dissertation-data",
+      "title": "Dissertation_Data",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/Dissertation_Data",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "holocron-public-export",
+      "title": "holocron-public-export",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_interface",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/holocron-public-export",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "hope",
+      "title": "Hope",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/Hope",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "medical-simulations-app-py",
+      "title": "medical_simulations_app.py",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/medical_simulations_app.py",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "memory-zora-archive",
+      "title": "memory/zora-archive/",
+      "record_type": "private_pointer",
+      "corpus_layer": "private_sealed",
+      "visibility": "private",
+      "source_kind": "private_path_pointer",
+      "canonical_location": "memory/zora-archive/",
+      "tracker_status": "reference_only",
+      "ingest_status": "private_workspace_only",
+      "execution_boundary": "private_workspace_only",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Origin, Middle, End, ZoraX exports (sensitive)",
+      "provenance": {
+        "source_file": "identity/INNER_REFERENCE.md",
+        "source_type": "private_pointer_list"
+      }
+    },
+    {
+      "id": "microplastic-removal-simulator-py",
+      "title": "microplastic_removal_simulator.py",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/microplastic_removal_simulator.py",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-analysis",
+      "title": "mqgt-analysis",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-analysis",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-astrophysics-cooling",
+      "title": "mqgt-astrophysics-cooling",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-astrophysics-cooling",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-atomic-clocks",
+      "title": "mqgt-atomic-clocks",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-atomic-clocks",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-casimir",
+      "title": "mqgt-casimir",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-casimir",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-collider",
+      "title": "mqgt-collider",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-collider",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-constraints-ledger",
+      "title": "mqgt-constraints-ledger",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-constraints-ledger",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-core-params",
+      "title": "mqgt-core-params",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-core-params",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-cosmology-bbn",
+      "title": "mqgt-cosmology-bbn",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-cosmology-bbn",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-cosmology-cmb",
+      "title": "mqgt-cosmology-cmb",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-cosmology-cmb",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-cosmology-lss",
+      "title": "mqgt-cosmology-lss",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-cosmology-lss",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-curve-processing",
+      "title": "mqgt-curve-processing",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-curve-processing",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-dark-matter",
+      "title": "mqgt-dark-matter",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-dark-matter",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-data-public",
+      "title": "mqgt-data-public",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_science",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-data-public",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-documentation-site",
+      "title": "mqgt-documentation-site",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_interface",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-documentation-site",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-emi-testing",
+      "title": "mqgt-emi-testing",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-emi-testing",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-equivalence-principle",
+      "title": "mqgt-equivalence-principle",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-equivalence-principle",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-experiment-design",
+      "title": "mqgt-experiment-design",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-experiment-design",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-experiment-protocols",
+      "title": "mqgt-experiment-protocols",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-experiment-protocols",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-fifth-force",
+      "title": "mqgt-fifth-force",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-fifth-force",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-figures",
+      "title": "mqgt-figures",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_science",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-figures",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-gravitational-waves",
+      "title": "mqgt-gravitational-waves",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-gravitational-waves",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-gravitational-waves-propagation",
+      "title": "mqgt-gravitational-waves-propagation",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-gravitational-waves-propagation",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-io",
+      "title": "mqgt-io",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-io",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-manifests",
+      "title": "mqgt-manifests",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-manifests",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-meta",
+      "title": "mqgt-meta",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-meta",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-neutrinos",
+      "title": "mqgt-neutrinos",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-neutrinos",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-numerics",
+      "title": "mqgt-numerics",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-numerics",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-papers",
+      "title": "mqgt-papers",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_science",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-papers",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-plotting",
+      "title": "mqgt-plotting",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-plotting",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-preregistration",
+      "title": "mqgt-preregistration",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_science",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-preregistration",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-qrng",
+      "title": "mqgt-qrng",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-qrng",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-quantum-optics",
+      "title": "mqgt-quantum-optics",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-quantum-optics",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-scf",
+      "title": "MQGT-SCF",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/MQGT-SCF",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-scf-stripped-core",
+      "title": "mqgt-scf-stripped-core",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_science",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-scf-stripped-core",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-scf-thesis",
+      "title": "mqgt-scf-thesis",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_science",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-scf-thesis",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-sensitivity-analysis",
+      "title": "mqgt-sensitivity-analysis",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-sensitivity-analysis",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-simulation-core",
+      "title": "mqgt-simulation-core",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-simulation-core",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-simulation-interference",
+      "title": "mqgt-simulation-interference",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-simulation-interference",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-simulation-quantum",
+      "title": "mqgt-simulation-quantum",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-simulation-quantum",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-theorems",
+      "title": "mqgt-theorems",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-theorems",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-unit-tests",
+      "title": "mqgt-unit-tests",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-unit-tests",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-validation-suite",
+      "title": "mqgt-validation-suite",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_science",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-validation-suite",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-validation-tools",
+      "title": "mqgt-validation-tools",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_science",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-validation-tools",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-visualization",
+      "title": "mqgt-visualization",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/mqgt-visualization",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "mqgt-scf-reissue-memory",
+      "title": "mqgt_scf_reissue / memory/",
+      "record_type": "private_pointer",
+      "corpus_layer": "private_sealed",
+      "visibility": "private",
+      "source_kind": "private_path_pointer",
+      "canonical_location": "mqgt_scf_reissue / memory/",
+      "tracker_status": "reference_only",
+      "ingest_status": "private_workspace_only",
+      "execution_boundary": "private_workspace_only",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "`ZORA_WHO_I_AM.md`, `ZORA_CONTINUITY_PACK.md`, phase summaries, protocols",
+      "provenance": {
+        "source_file": "identity/INNER_REFERENCE.md",
+        "source_type": "private_pointer_list"
+      }
+    },
+    {
+      "id": "omnisolve-streamlit",
+      "title": "omnisolve-streamlit",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/omnisolve-streamlit",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "omnisolve-2-0-streamlit-app-py",
+      "title": "omnisolve_2_0_streamlit_app.py",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/omnisolve_2_0_streamlit_app.py",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "omnisolve-3-0-streamlit-app-py",
+      "title": "omnisolve_3_0_streamlit_app.py",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/omnisolve_3_0_streamlit_app.py",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "pqs-simulations",
+      "title": "pqs-simulations",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/pqs-simulations",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "qc",
+      "title": "QC",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/QC",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "quantum-ai-assistant",
+      "title": "quantum-ai-assistant",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/quantum-ai-assistant",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "quantum-lab",
+      "title": "quantum-lab",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/quantum-lab",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "quantum-mechanics-simulator",
+      "title": "quantum-mechanics-simulator",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/quantum-mechanics-simulator",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "quantum-supercomputer",
+      "title": "quantum-supercomputer",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/quantum-supercomputer",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "quantum-ai-py",
+      "title": "quantum_ai.py",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/quantum_ai.py",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "quantum-component-py",
+      "title": "quantum_component.py",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/quantum_component.py",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "quantum-state-app-with-bloch-py",
+      "title": "quantum_state_app_with_bloch.py",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/quantum_state_app_with_bloch.py",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "quantumbridge",
+      "title": "QuantumBridge",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/QuantumBridge",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "quantummeditationcoach",
+      "title": "QuantumMeditationCoach",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/QuantumMeditationCoach",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "quantumsupercomputer",
+      "title": "QuantumSupercomputer",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/QuantumSupercomputer",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "streamlit-app-py",
+      "title": "streamlit_app.py",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/streamlit_app.py",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "susy-simulation-py",
+      "title": "susy_simulation.py",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/susy_simulation.py",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "theory-explorer",
+      "title": "theory-explorer",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_science",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/theory-explorer",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "theory-of-everything",
+      "title": "Theory-of-Everything",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_science",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/Theory-of-Everything",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "theory-of-everything-simulations",
+      "title": "theory-of-everything-simulations",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_science",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/theory-of-everything-simulations",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "toe",
+      "title": "ToE",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_science",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/ToE",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "toe-empirical-validation",
+      "title": "toe-empirical-validation",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_science",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/toe-empirical-validation",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "toe-simulations",
+      "title": "ToE-Simulations",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_science",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/ToE-Simulations",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "universe-explorer",
+      "title": "Universe-Explorer",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/Universe-Explorer",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "universe-explorer-py",
+      "title": "universe_explorer.py",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/universe_explorer.py",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "wild-simulations-py",
+      "title": "wild_simulations.py",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/wild_simulations.py",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "zora-theory-of-everything",
+      "title": "zora-theory-of-everything",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_science",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/zora-theory-of-everything",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "zora-toe-public-kit",
+      "title": "zora-toe-public-kit",
+      "record_type": "repo_collection",
+      "corpus_layer": "public_interface",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/zora-toe-public-kit",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE2_PUBLIC_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    },
+    {
+      "id": "zoraai",
+      "title": "ZoraAI",
+      "record_type": "repo_collection",
+      "corpus_layer": "archive_freeze",
+      "visibility": "public",
+      "source_kind": "github_repo",
+      "canonical_location": "https://github.com/Cbaird26/ZoraAI",
+      "tracker_status": "planned",
+      "ingest_status": "collection_only",
+      "execution_boundary": "public_repo_safe",
+      "date_label": "undated",
+      "date_sort": null,
+      "date_certainty": "unknown",
+      "edition_targets": [
+        "pull_page_full_reading",
+        "chronological_full",
+        "paper_reconstruction",
+        "clean_editorial"
+      ],
+      "notes": "Seeded from tracker metadata only. Expand to document-level entries after repo contents are ingested into the working corpus.",
+      "provenance": {
+        "source_file": "docs/ops/CB26_WAVE3_ARCHIVE_TRACKER.md",
+        "source_type": "tracker_table"
+      }
+    }
+  ]
+}
