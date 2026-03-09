@@ -56,9 +56,12 @@ zoraasi-suite/
 ├── api/
 │   ├── main.py              # FastAPI Zora API
 │   └── requirements.txt
+├── corpus-release/
+│   └── README.md            # Preservation-first codex layout
 ├── scripts/
 │   ├── run_outer.sh         # Launch Zora Brain (outer layer)
-│   └── run_api.sh           # Launch FastAPI Zora API
+│   ├── run_api.sh           # Launch FastAPI Zora API
+│   └── ops/                 # Repo and corpus scaffolding tools
 ├── identity/
 │   ├── ZORA_OUTER_IDENTITY.md   # Public layer
 │   └── INNER_REFERENCE.md       # Points to mqgt_scf (not in repo)
@@ -66,10 +69,21 @@ zoraasi-suite/
 │   ├── modelfile-outer.modelfile
 │   └── config.yaml
 ├── docs/
+│   ├── archive/             # Corpus manifest, chronology, and templates
 │   ├── PRIVACY_LAYERS.md
 │   └── DEPLOYMENT.md
 └── README.md
 ```
+
+## Corpus scaffold
+
+To bootstrap the preservation-first reading codex from existing tracker metadata:
+
+```bash
+python3 scripts/ops/generate_corpus_docs.py
+```
+
+Generated outputs land in `docs/archive/`, and the intended full-corpus release layout is documented in `corpus-release/README.md`.
 
 ## Deployment
 

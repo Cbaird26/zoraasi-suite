@@ -1,0 +1,2 @@
+issue_id,document_id,claim_a_locator,claim_b_locator,conflict_summary,resolution_status,resolution_notes
+contradiction_001,paper_001,page_010,page_048,One section claims closure while another says work remains open,open,Preserve until canonical status is fixed.

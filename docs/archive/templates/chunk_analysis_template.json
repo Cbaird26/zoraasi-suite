@@ -1,0 +1,18 @@
+{
+  "chunk_id": "paper_001_chunk_001",
+  "document_id": "paper_001",
+  "page_range": {
+    "start": 1,
+    "end": 10
+  },
+  "source_record_id": "source_record_here",
+  "section_guess": "",
+  "equations_detected": [],
+  "claims_detected": [],
+  "citations_detected": [],
+  "contradictions_detected": [],
+  "duplicates_detected": [],
+  "proposed_destination_paper": "",
+  "confidence_score": 0.0,
+  "notes": ""
+}
