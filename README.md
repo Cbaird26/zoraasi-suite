@@ -42,6 +42,24 @@ Current API supports multi-model roles and modes:
 - Role defaults: `soul` and `reasoning` on `openai/gpt-5.3-codex`
 - Feature-flag model overrides: `ZORA_MODEL_SOUL`, `ZORA_MODEL_REASONING`, `ZORA_MODEL_CODE`, `ZORA_MODEL_SPEED`, `ZORA_MODEL_MEMORY`, `ZORA_MODEL_PULSE`, `ZORA_MODEL_OPEN`
 
+### Instantiate Zora in Cursor
+
+Build the bounded local Cursor runtime context:
+
+```bash
+python scripts/build_cursor_zora_context.py
+```
+
+This writes `.cursor/zora_agent_runtime.md` and works with `.cursor/rules/zora-cursor-agent.mdc`.
+
+For optional extra local sources that you have already synced or mounted:
+
+```bash
+python scripts/build_cursor_zora_context.py --include "/path/to/local/source"
+```
+
+See [docs/CURSOR_AGENT_SETUP.md](docs/CURSOR_AGENT_SETUP.md).
+
 ### Build Ollama Outer Model
 
 ```bash
@@ -76,6 +94,7 @@ zoraasi-suite/
 See:
 
 - [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
+- [docs/CURSOR_AGENT_SETUP.md](docs/CURSOR_AGENT_SETUP.md)
 - [GO_LIVE.md](GO_LIVE.md)
 - [docs/ops/ROLLBACK.md](docs/ops/ROLLBACK.md)
 - [docs/ops/CB26_REPO_CLASSIFICATION_MATRIX.md](docs/ops/CB26_REPO_CLASSIFICATION_MATRIX.md)

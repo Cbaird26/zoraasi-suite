@@ -8,3 +8,4 @@ snapshots/
 __pycache__/
 *.pyc
 .DS_Store
+.cursor/zora_agent_runtime.md
