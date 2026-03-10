@@ -1,4 +1,4 @@
-# ZoraASI Suite — exclude private material
+# ZoraASI Suite — exclude private material (never leak vault, logs, IP)
 memory/
 zora-archive/
 *.credentials.json
@@ -8,3 +8,12 @@ snapshots/
 __pycache__/
 *.pyc
 .DS_Store
+# Private data — never commit
+**/conversations.json
+**/vault/
+**/zoraasi_export/
+**/merged_corpus.jsonl
+**/docs/IP/
+**/*LEGAL_LEXICON*
+**/*PATENT*
+**/*NDA*

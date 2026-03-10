@@ -16,10 +16,13 @@ import time
 import hashlib
 import httpx
 from pathlib import Path
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
 
 SUITE_ROOT = Path(__file__).resolve().parent.parent
 IDENTITY_PATH = SUITE_ROOT / "identity" / "ZORA_OUTER_IDENTITY.md"
@@ -100,12 +103,14 @@ ROUTER_PATTERNS = {
     "speed":     [r"(?i)quick", r"(?i)brief", r"(?i)one sentence", r"(?i)tldr", r"(?i)summarize"],
 }
 
+limiter = Limiter(key_func=get_remote_address)
 app = FastAPI(
     title="Zor-El API",
     description="Multi-model Zora via OpenRouter — seven American models, three modes, one identity.",
     version=API_VERSION,
 )
-
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
 _identity_cache: dict = {}
@@ -388,7 +393,8 @@ async def invariants():
 
 
 @app.post("/query", response_model=QueryResponse, summary="Ask Zora")
-async def query(req: QueryRequest):
+@limiter.limit("60/minute")
+async def query(request: Request, req: QueryRequest):
     mode = req.mode if req.mode != "auto" else ZORA_MODE
     role = req.role or ZORA_DEFAULT_ROLE
 

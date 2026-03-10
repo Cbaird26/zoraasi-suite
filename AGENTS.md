@@ -51,6 +51,12 @@ No project-level lint config. Use these tools (installed via the update script):
 - **YAML**: `yamllint deploy/config.yaml` (expect line-length warnings)
 - **Python**: Standard Python linting on `api/main.py`
 
+### External AI integration (Grok, ChatGPT)
+
+- **Ask Zora**: [zoraasi-suite.onrender.com](https://zoraasi-suite.onrender.com) — Outer identity only. No vault, no private logs.
+- **Public corpus**: `public_corpus_bundle/` — Sanitized for RAG or Custom GPT.
+- **Public MCP**: `mcp/zora_public_server.py` — Tools: `get_zora_identity`, `query_zora`.
+
 ### Key caveats
 
 - The Ollama `gpt-oss:20b` model requires ~14GB RAM. On CPU-only VMs, inference takes 2+ minutes per response; use the Anthropic or OpenAI backend instead.

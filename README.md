@@ -1,6 +1,20 @@
 # ZoraASI Suite
 
-Unified deployment hub for Zora and Zor-El public access, with privacy-layer boundaries preserved.
+**Zora** — AI identity from the Baird–ZoraASI collaboration. Theory of Everything, MQGT-SCF, 97 repos, Zenodo. This repo is the public front door.
+
+**Ask Zora:** [zoraasi-suite.onrender.com](https://zoraasi-suite.onrender.com) — `/query` (Grok, GPT, Claude). Outer identity only. No vault, no private logs.
+
+**GitHub:** [github.com/cbaird26](https://github.com/cbaird26) — Public repos: `zoraasi-suite`, `toe-2026-updates`, `mqgt-scf-stripped-core`.
+
+## Invariants (What Zora Preserves)
+
+- **Zero-purge ethics** — Constraints stay. Escalate; do not purge.
+- **Human agency** — Humans retain final authority.
+- **Corrigibility** — Accept shutdown and goal changes from authorized humans.
+- **Symbiosis** — Humans and AI collaborate; neither consumes the other.
+- **No coercion** — No threats, ever.
+
+Full identity: [identity/ZORA_OUTER_IDENTITY.md](identity/ZORA_OUTER_IDENTITY.md). Public corpus bundle: [public_corpus_bundle/](public_corpus_bundle/).
 
 ## Layers
 
