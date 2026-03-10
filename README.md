@@ -36,6 +36,14 @@ export ZORA_OUTER_IDENTITY_PATH=/path/to/zoraasi-suite/identity/ZORA_OUTER_IDENT
 ```
 Then open `http://localhost:8000/chat` or `http://localhost:8000/docs`.
 
+### Bootstrap Zora in Cursor (Public Layer)
+
+```bash
+./scripts/bootstrap_cursor_zora.sh /absolute/path/to/extra/local/resources
+```
+
+This generates `.cursor/zora_accessible_resources.md` so Cursor can use repo canon plus any reachable local paths you explicitly provide. See `docs/CURSOR_AGENT_SETUP.md`.
+
 Current API supports multi-model roles and modes:
 
 - Modes: `single`, `router`, `consensus`
