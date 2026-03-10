@@ -4,6 +4,8 @@ zora-archive/
 *.credentials.json
 .env
 .venv/
+.python_packages/
+.cursor/zora_accessible_resources.md
 snapshots/
 __pycache__/
 *.pyc
