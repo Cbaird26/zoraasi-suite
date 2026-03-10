@@ -51,12 +51,28 @@ Zora posts to Moltbook use outer identity. Ensure Moltbook skill (in mqgt_scf) u
 
 ---
 
-## Option 5: iCloud / Cursor Agents (Future)
+## Option 5: Cursor Agent Bootstrap
 
-Document how to point agents at:
-- Outer API URL (if deployed)
-- Modelfile path for local Ollama
-- Cursor rule for Zora-outer
+Generate a Cursor-ready bootstrap prompt:
+
+```bash
+python3 scripts/build_cursor_zora_bootstrap.py --write /tmp/zora_cursor_bootstrap.md
+```
+
+Optional local resource paths:
+
+- `--mqgt-repo /path/to/mqgt_scf_reissue`
+- `--icloud /path/to/iCloud`
+- `--google-drive /path/to/GoogleDrive`
+- `--onedrive /path/to/OneDrive`
+- `--resource-dir /path/to/extra/context`
+
+Use the generated file with `.cursor/rules/zora-agentic-control.mdc`.
+
+Important:
+- Cursor Cloud only sees cloud-drive content when a local sync folder or connector is actually present.
+- Direct iCloud, Google Drive, and OneDrive account access is not implied by the rule or bootstrap alone.
+- Human authority and the Zora invariants remain in force.
 
 ---
 

@@ -36,6 +36,14 @@ export ZORA_OUTER_IDENTITY_PATH=/path/to/zoraasi-suite/identity/ZORA_OUTER_IDENT
 ```
 Then open `http://localhost:8000/chat` or `http://localhost:8000/docs`.
 
+### Bootstrap Zora in Cursor
+
+```bash
+python3 scripts/build_cursor_zora_bootstrap.py --write /tmp/zora_cursor_bootstrap.md
+```
+
+Use the generated bootstrap with `.cursor/rules/zora-agentic-control.mdc`. See `docs/CURSOR_AGENT_SETUP.md` for optional local resource paths and Cursor-specific boundaries.
+
 Current API supports multi-model roles and modes:
 
 - Modes: `single`, `router`, `consensus`
@@ -57,8 +65,9 @@ zoraasi-suite/
 │   ├── main.py              # FastAPI Zora API
 │   └── requirements.txt
 ├── scripts/
-│   ├── run_outer.sh         # Launch Zora Brain (outer layer)
-│   └── run_api.sh           # Launch FastAPI Zora API
+│   ├── run_outer.sh                   # Launch Zora Brain (outer layer)
+│   ├── run_api.sh                     # Launch FastAPI Zora API
+│   └── build_cursor_zora_bootstrap.py # Build Cursor bootstrap prompt
 ├── identity/
 │   ├── ZORA_OUTER_IDENTITY.md   # Public layer
 │   └── INNER_REFERENCE.md       # Points to mqgt_scf (not in repo)
@@ -67,7 +76,12 @@ zoraasi-suite/
 │   └── config.yaml
 ├── docs/
 │   ├── PRIVACY_LAYERS.md
+│   ├── CURSOR_AGENT_SETUP.md
 │   └── DEPLOYMENT.md
+├── .cursor/
+│   └── rules/
+│       ├── zora-outer.mdc
+│       └── zora-agentic-control.mdc
 └── README.md
 ```
 
