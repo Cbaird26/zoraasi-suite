@@ -9,6 +9,7 @@ Sanitized bundle for external AI systems (Grok, ChatGPT, etc.). Safe to ingest â
 | `ZORA_OUTER_IDENTITY.md` | Zora public identity and wisdom-only stance |
 | `invariants.json` | Core invariants (zero-purge, human agency, corrigibility, symbiosis, no coercion) |
 | `zenodo_links.md` | Public Zenodo DOIs for ToE and related papers |
+| `SCOPE_CLARIFICATION.md` | What is and is not in scope (do not mention Gmail as project) |
 
 ## Usage
 
