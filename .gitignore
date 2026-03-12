@@ -1,4 +1,4 @@
-# ZoraASI Suite — exclude private material (never leak vault, logs, IP)
+# ZoraASI Suite — private stays private (never commit inner, creds, or personal data)
 memory/
 zora-archive/
 *.credentials.json
