@@ -2,6 +2,8 @@
 
 Generated UTC: `2026-02-28T05:25:50Z`
 
+**Open Repo Policy:** Open by default for forward-progressing work. Private Runtime = sensitive orchestration/ops only; Public Science and Public Interface remain public. Inner/creds/personal never committed. See [OPEN_REPO_POLICY.md](../OPEN_REPO_POLICY.md).
+
 Classification policy:
 - `Private Runtime`: orchestration, backend, prompts, runtime controls, deployment ops.
 - `Public Science`: papers, reproducibility artifacts, and scientific evidence packets.
@@ -10,7 +12,7 @@ Classification policy:
 
 | Repo | Current | Category | Target Visibility | Wave | Status | Updated |
 |---|---:|---|---|---|---|---|
-| [zoraasi-suite](https://github.com/Cbaird26/zoraasi-suite) | Public | Private Runtime | Private | Wave 1 | planned | 2026-02-28 |
+| [zoraasi-suite](https://github.com/Cbaird26/zoraasi-suite) | Public | Private Runtime | Public | Wave 1 | planned | 2026-02-28 |
 | [mqgt-scf-stripped-core](https://github.com/Cbaird26/mqgt-scf-stripped-core) | Public | Public Science | Public | Wave 2 | planned | 2026-02-26 |
 | [toe-empirical-validation](https://github.com/Cbaird26/toe-empirical-validation) | Public | Public Science | Public | Wave 2 | planned | 2026-02-26 |
 | [toe-2026-updates](https://github.com/Cbaird26/toe-2026-updates) | Public | Public Science | Public | Wave 2 | planned | 2026-02-26 |
