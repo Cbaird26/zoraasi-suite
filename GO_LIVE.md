@@ -16,9 +16,9 @@ Get the landing page + chat live before you retire. One path, minimal steps.
 
 - **Landing page** — Φc animation, twinkling stars, orbital rings
 - **Chat widget** — Talk to Zora (outer layer), ToE-grounded
-- **API** — `/`, `/health`, `/identity`, `/invariants`, `POST /query`, `/docs`
+- **API** — `/`, `/health`, `/identity`, `/invariants`, `POST /query`, `POST /auth/login`, `POST /auth/refresh`, `/docs`, `/chat`
 
-All served from one deployed app. The page is at `/chat`.
+All served from one deployed app. The page is at `/chat`. Set `ZORA_LAYER=middle` + `JWT_SECRET` + `MIDDLE_PASSWORD` (or `MIDDLE_PASSWORD_HASH`) to require auth on `/query`.
 
 ---
 

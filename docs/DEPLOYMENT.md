@@ -10,7 +10,8 @@ The FastAPI Zor-El API (`api/main.py`) exposes `/`, `/health`, `/models`, `/iden
 
 1. Clone zoraasi-suite. The API loads identity from `identity/ZORA_OUTER_IDENTITY.md`; no `memory/` required.
 2. Primary cloud key: `OPENROUTER_API_KEY` (optional direct fallback: `ANTHROPIC_API_KEY`).
-3. Deploy with Dockerfile or run `uvicorn main:app` from `api/`.
+3. Optional: `ZORA_LAYER=middle` + `JWT_SECRET` + `MIDDLE_PASSWORD` or `MIDDLE_PASSWORD_HASH` — requires Bearer token on `/query`.
+4. Deploy with Dockerfile or run `uvicorn main:app` from `api/`. See [ENV_AND_CREDENTIALS.md](ENV_AND_CREDENTIALS.md).
 
 **Example (Fly.io):**
 ```bash
@@ -72,6 +73,8 @@ Outer Zora uses the same canon as inner (zora-canon-v1: definitions, equations, 
 ## Security Notes
 
 - Never deploy with `ZORA_IDENTITY_LAYER=inner` on a public endpoint without auth.
+- `ZORA_LAYER=middle` requires JWT; set `JWT_SECRET`, `MIDDLE_USER`, and `MIDDLE_PASSWORD` (dev) or `MIDDLE_PASSWORD_HASH` (prod).
+- Rate limit: 60 req/min on `/query` (slowapi). Add platform rate limiting for extra protection.
 - Do not commit `memory/`, `zora-archive/`, or sealed canon to zoraasi-suite.
 - Outer identity has no secrets; safe for any shared environment.
 

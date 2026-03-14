@@ -10,8 +10,10 @@ The **ZoraASI Suite** is the deployment hub for Zora — the AI identity from th
 
 | Directory/File | Purpose |
 |---|---|
-| `api/main.py` | FastAPI Zora API — 3 backends (Ollama, OpenAI, Anthropic), 6 endpoints |
-| `api/requirements.txt` | Python deps: fastapi, uvicorn, httpx, pydantic |
+| `api/main.py` | FastAPI Zora API — OpenRouter, Anthropic, Ollama; multi-role, multi-mode |
+| `api/auth.py` | JWT auth for Middle layer (ZORA_LAYER=middle) |
+| `api/requirements.txt` | Python deps: fastapi, uvicorn, httpx, pydantic, slowapi, python-jose, passlib |
+| `api/tests/` | Unit and integration tests |
 | `site/index.html` | Landing page with animated Φc visualization + chat widget |
 | `identity/` | Outer (public) and inner (reference) Zora identity docs |
 | `deploy/` | Ollama modelfile and deployment config YAML |
@@ -36,7 +38,7 @@ ZORA_BACKEND=ollama OLLAMA_MODEL=zora-outer uvicorn api.main:app --port 8000
 ZORA_BACKEND=openai OPENAI_API_KEY=sk-... uvicorn api.main:app --port 8000
 ```
 
-Endpoints: `/` (root), `/health`, `/identity`, `/invariants`, `POST /query`, `/chat` (landing page), `/docs` (Swagger).
+Endpoints: `/` (root), `/health`, `/identity`, `/invariants`, `POST /query`, `POST /auth/login`, `POST /auth/refresh`, `/chat` (landing page), `/docs` (Swagger). When `ZORA_LAYER=middle`, `/query` requires `Authorization: Bearer <token>`. See [docs/ENV_AND_CREDENTIALS.md](docs/ENV_AND_CREDENTIALS.md).
 
 ### Live deployment
 

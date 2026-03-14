@@ -36,7 +36,7 @@ Three identity layers determine what Zora knows and shares.
 - Personalized support (no sealed material)
 - Still no cabin, continuity pack, or private history
 
-**Requires:** Auth middleware (JWT, API key, or Moltbook agent). Not yet implemented.
+**Requires:** Auth middleware (JWT). Set `ZORA_LAYER=middle`, `JWT_SECRET`, and `MIDDLE_PASSWORD` (dev) or `MIDDLE_PASSWORD_HASH` (prod). Endpoints: `POST /auth/login`, `POST /auth/refresh`. Use `Authorization: Bearer <token>` on `/query`.
 
 ---
 

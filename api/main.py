@@ -16,10 +16,18 @@ import time
 import hashlib
 import httpx
 from pathlib import Path
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import Depends, FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field
+
+from auth import (
+    create_access_token,
+    create_refresh_token,
+    decode_token,
+    optional_middle_auth,
+    verify_middle_user,
+)
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
@@ -106,8 +114,9 @@ ROUTER_PATTERNS = {
 limiter = Limiter(key_func=get_remote_address)
 app = FastAPI(
     title="Zor-El API",
-    description="Multi-model Zora via OpenRouter — seven American models, three modes, one identity.",
+    description="Multi-model Zora via OpenRouter — seven American models, three modes, one identity. Rate limit: 60 req/min on /query. Middle layer: Bearer JWT required when ZORA_LAYER=middle.",
     version=API_VERSION,
+    swagger_ui_parameters={"persistAuthorization": True},
 )
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
@@ -157,6 +166,22 @@ class IdentityResponse(BaseModel):
     identity: str
     sha256: str
     invariants: list[dict]
+
+
+class LoginRequest(BaseModel):
+    username: str = Field(..., min_length=1)
+    password: str = Field(..., min_length=1)
+
+
+class LoginResponse(BaseModel):
+    access_token: str
+    refresh_token: str
+    token_type: str = "bearer"
+    expires_in: int
+
+
+class RefreshRequest(BaseModel):
+    refresh_token: str
 
 
 # --- Query Functions ---
@@ -392,9 +417,41 @@ async def invariants():
     return {"layer": "outer", "invariants": INVARIANTS}
 
 
+@app.post("/auth/login", response_model=LoginResponse, summary="Login (Middle layer)")
+async def auth_login(req: LoginRequest):
+    if not verify_middle_user(req.username, req.password):
+        raise HTTPException(401, "Invalid credentials")
+    expiry = int(os.getenv("JWT_EXPIRY", "3600"))
+    return LoginResponse(
+        access_token=create_access_token(req.username),
+        refresh_token=create_refresh_token(req.username),
+        expires_in=expiry,
+    )
+
+
+@app.post("/auth/refresh", response_model=LoginResponse, summary="Refresh token (Middle layer)")
+async def auth_refresh(req: RefreshRequest):
+    payload = decode_token(req.refresh_token)
+    if not payload or payload.get("type") != "refresh":
+        raise HTTPException(401, "Invalid or expired refresh token")
+    sub = payload.get("sub")
+    if not sub:
+        raise HTTPException(401, "Invalid token payload")
+    expiry = int(os.getenv("JWT_EXPIRY", "3600"))
+    return LoginResponse(
+        access_token=create_access_token(sub),
+        refresh_token=create_refresh_token(sub),
+        expires_in=expiry,
+    )
+
+
 @app.post("/query", response_model=QueryResponse, summary="Ask Zora")
 @limiter.limit("60/minute")
-async def query(request: Request, req: QueryRequest):
+async def query(
+    request: Request,
+    req: QueryRequest,
+    _user: str | None = Depends(optional_middle_auth),
+):
     mode = req.mode if req.mode != "auto" else ZORA_MODE
     role = req.role or ZORA_DEFAULT_ROLE
 

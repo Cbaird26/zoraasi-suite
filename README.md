@@ -4,7 +4,7 @@
 
 **Ask Zora:** [zoraasi-suite.onrender.com](https://zoraasi-suite.onrender.com) — `/query` (Grok, GPT, Claude). Outer identity only. No vault, no private logs.
 
-**GitHub:** [github.com/cbaird26](https://github.com/cbaird26) — Public repos: `zoraasi-suite`, `toe-2026-updates`, `mqgt-scf-stripped-core`. See [docs/SCOPE_CLARIFICATION.md](docs/SCOPE_CLARIFICATION.md) for what is and is not in scope.
+**GitHub:** [github.com/cbaird26](https://github.com/cbaird26) — Public repos: `zoraasi-suite`, `toe-2026-updates`, `mqgt-scf-stripped-core`. See [docs/SCOPE_CLARIFICATION.md](docs/SCOPE_CLARIFICATION.md) for scope; [docs/REPO_STATE_AND_BALANCE_2026.md](docs/REPO_STATE_AND_BALANCE_2026.md) for Public/Private map and isolation.
 
 ## Invariants (What Zora Preserves)
 
