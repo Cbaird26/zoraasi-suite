@@ -17,8 +17,9 @@ import hashlib
 import httpx
 from pathlib import Path
 from fastapi import Depends, FastAPI, HTTPException, Request
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 from pydantic import BaseModel, Field
 
 from auth import (
@@ -121,6 +122,45 @@ app = FastAPI(
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
+
+
+# --- Structured error responses (Grok feedback: expand error-handling examples) ---
+
+class ErrorDetail(BaseModel):
+    """Structured error response for API clients."""
+    code: str
+    message: str
+    detail: str | None = None
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    """Return 422 with structured body for validation errors."""
+    return JSONResponse(
+        status_code=422,
+        content={
+            "error": {
+                "code": "validation_error",
+                "message": "Request validation failed",
+                "detail": exc.errors(),
+            }
+        },
+    )
+
+
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request: Request, exc: HTTPException):
+    """Return consistent JSON for HTTPException."""
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={
+            "error": {
+                "code": exc.detail if isinstance(exc.detail, str) and len(exc.detail) < 64 else "http_error",
+                "message": str(exc.detail),
+                "detail": None,
+            }
+        },
+    )
 
 _identity_cache: dict = {}
 
